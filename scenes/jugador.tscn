@@ -1,8 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://doram5416i8ln"]
+[gd_scene load_steps=23 format=3 uid="uid://doram5416i8ln"]
 
 [ext_resource type="Script" path="res://scenes/jugador.gd" id="1_08ii7"]
 [ext_resource type="Texture2D" uid="uid://ctd2c6qigo1je" path="res://Female Character/SpriteSheets/01 Idle.png" id="1_geqac"]
 [ext_resource type="Texture2D" uid="uid://cyx033mxuis2r" path="res://Female Character/SpriteSheets/Attack/Female Character Attack 01.png" id="2_q1pin"]
+[ext_resource type="Script" path="res://Agua.gd" id="4_upmkn"]
+[ext_resource type="Texture2D" uid="uid://dqn6f10s4ddfp" path="res://Female Character/SpriteSheets/02 Run.png" id="4_ycmfu"]
+[ext_resource type="Texture2D" uid="uid://bu4cnl3d8m32x" path="res://kisspng-pixel-art-pixelation-old-age-5ade6f8d7667f6.969482261524526989485.png" id="5_2xqmx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxrjf"]
+radius = 34.8574
+height = 96.9873
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w2fme"]
 radius = 9.0
@@ -202,14 +209,51 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_wb6dm"]
 resource_name = "run"
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("pivot/Sprite2D:frame")
+tracks/0/path = NodePath("pivot/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_ycmfu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot/Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
@@ -236,25 +280,15 @@ animation = &"run"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fsvce"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xq57h"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ybwxa"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ijo7s"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mo8e0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7frpe"]
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_36x7i"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gimee"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_17h0p"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0v27e"]
-switch_mode = 2
-advance_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ecgr"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uurf3"]
 states/Idle/node = SubResource("AnimationNodeAnimation_50cha")
@@ -262,10 +296,12 @@ states/Idle/position = Vector2(420, 99.7778)
 states/attack/node = SubResource("AnimationNodeAnimation_knlnm")
 states/attack/position = Vector2(636, 100.667)
 states/run/node = SubResource("AnimationNodeAnimation_4s8jg")
-states/run/position = Vector2(518, 39)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fsvce"), "Idle", "attack", SubResource("AnimationNodeStateMachineTransition_xq57h"), "attack", "Idle", SubResource("AnimationNodeStateMachineTransition_ijo7s"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_36x7i"), "run", "Idle", SubResource("AnimationNodeStateMachineTransition_gimee"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_17h0p"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_0v27e")]
+states/run/position = Vector2(509, 183)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fsvce"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_ybwxa"), "Idle", "attack", SubResource("AnimationNodeStateMachineTransition_mo8e0"), "attack", "Idle", SubResource("AnimationNodeStateMachineTransition_7frpe"), "run", "Idle", SubResource("AnimationNodeStateMachineTransition_6ecgr")]
+graph_offset = Vector2(0, 37.4386)
 
 [node name="Jugador" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_08ii7")
 
 [node name="pivot" type="Node2D" parent="."]
@@ -277,7 +313,30 @@ texture = ExtResource("1_geqac")
 hframes = 7
 frame = 1
 
+[node name="AguaSpawn" type="Marker2D" parent="pivot"]
+position = Vector2(59, 0)
+scale = Vector2(3, 1)
+
+[node name="Agua2" type="Area2D" parent="pivot"]
+position = Vector2(59, 0)
+collision_layer = 4
+script = ExtResource("4_upmkn")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/Agua2"]
+position = Vector2(1.00001, 1.90735e-06)
+scale = Vector2(0.918027, 0.32994)
+shape = SubResource("CapsuleShape2D_wxrjf")
+
+[node name="Sprite2D" type="Sprite2D" parent="pivot/Agua2"]
+rotation = -1.56783
+scale = Vector2(0.0906027, 0.112168)
+texture = ExtResource("5_2xqmx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pivot/Agua2"]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_w2fme")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

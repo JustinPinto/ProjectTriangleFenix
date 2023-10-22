@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://csvd0yrhp4ef1"]
+
+[ext_resource type="Script" path="res://scenes/Agua.gd" id="1_qie4i"]
+[ext_resource type="Texture2D" uid="uid://qh0pn4rpnytc" path="res://kisspng-pixel-art-pixelation-old-age-5ade6f8d7667f6.969482261524526989485.png" id="2_s428k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8kcw"]
+size = Vector2(436, 282)
+
+[node name="Agua" type="Area2D"]
+script = ExtResource("1_qie4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("2_s428k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22, -5)
+shape = SubResource("RectangleShape2D_u8kcw")
