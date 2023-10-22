@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bclo58dxhbypu"]
+[gd_scene load_steps=4 format=3 uid="uid://bclo58dxhbypu"]
 
 [ext_resource type="Texture2D" uid="uid://byxvk7pjl8cu0" path="res://icon.svg" id="1_s2h0u"]
+[ext_resource type="Script" path="res://scenes/enemigoprueba.gd" id="1_s64nf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vqo7f"]
 size = Vector2(132.5, 131.5)
 
 [node name="enemigoprueba" type="CharacterBody2D"]
+script = ExtResource("1_s64nf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.25, -0.75)

@@ -1,0 +1,122 @@
+[gd_scene load_steps=12 format=3 uid="uid://iuw1bxofkbni"]
+
+[ext_resource type="Script" path="res://scenes/lanzar_awa/player.gd" id="1_mqn11"]
+[ext_resource type="Texture2D" uid="uid://bkrgyh7iclyae" path="res://scenes/lanzar_awa/awa.png" id="2_qrf26"]
+
+[sub_resource type="Gradient" id="Gradient_7x3vg"]
+offsets = PackedFloat32Array(0, 0.512887, 1)
+colors = PackedColorArray(6.16074e-06, 0.682, 0.909478, 1, 0.482353, 0.835294, 0.952941, 0.992157, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vsyb3"]
+gradient = SubResource("Gradient_7x3vg")
+
+[sub_resource type="Curve" id="Curve_ntqpq"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gdr7u"]
+curve = SubResource("Curve_ntqpq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s43n8"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+direction = Vector3(4, -1, 0)
+spread = 20.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 110.0
+initial_velocity_max = 200.0
+angular_velocity_min = 20.0
+angular_velocity_max = 40.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 5.0
+damping_max = 10.0
+angle_min = 30.0
+angle_max = 80.0
+scale_min = 0.5
+scale_max = 1.2
+color = Color(0, 0.996078, 1, 1)
+color_ramp = SubResource("GradientTexture1D_vsyb3")
+hue_variation_curve = SubResource("CurveTexture_gdr7u")
+
+[sub_resource type="Animation" id="Animation_kl2xr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitboxAwa/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cgs4l"]
+resource_name = "lanzar_awa"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pawarticulas:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxAwa/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o8n1l"]
+_data = {
+"RESET": SubResource("Animation_kl2xr"),
+"lanzar_awa": SubResource("Animation_cgs4l")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7yy7x"]
+radius = 6.21527
+height = 12.4305
+
+[node name="Agua_gpu" type="Node2D"]
+script = ExtResource("1_mqn11")
+
+[node name="Pawarticulas" type="GPUParticles2D" parent="."]
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_s43n8")
+texture = ExtResource("2_qrf26")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o8n1l")
+}
+
+[node name="HitboxAwa" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxAwa"]
+position = Vector2(68, 1)
+rotation = 1.58798
+scale = Vector2(3.75812, 11.0945)
+shape = SubResource("CapsuleShape2D_7yy7x")
+disabled = true
+
+[connection signal="body_entered" from="HitboxAwa" to="." method="_on_hitbox_awa_body_entered"]

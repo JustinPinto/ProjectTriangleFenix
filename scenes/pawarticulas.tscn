@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cp4534vc2hj3u"]
+
+[ext_resource type="Texture2D" uid="uid://bkrgyh7iclyae" path="res://scenes/lanzar_awa/awa.png" id="1_fs8mc"]
+[ext_resource type="Script" path="res://scenes/pawarticulas.gd" id="2_w7ua5"]
+
+[sub_resource type="Gradient" id="Gradient_qs4ml"]
+offsets = PackedFloat32Array(0, 0.512887, 1)
+colors = PackedColorArray(6.16074e-06, 0.682, 0.909478, 1, 0.482353, 0.835294, 0.952941, 0.992157, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l3s3w"]
+gradient = SubResource("Gradient_qs4ml")
+
+[sub_resource type="Curve" id="Curve_b4uob"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j72ht"]
+curve = SubResource("Curve_b4uob")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7dnqd"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+direction = Vector3(4, -1, 0)
+spread = 20.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 110.0
+initial_velocity_max = 200.0
+angular_velocity_min = 20.0
+angular_velocity_max = 40.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 5.0
+damping_max = 10.0
+angle_min = 30.0
+angle_max = 80.0
+scale_min = 0.5
+scale_max = 1.2
+color = Color(0, 0.996078, 1, 1)
+color_ramp = SubResource("GradientTexture1D_l3s3w")
+hue_variation_curve = SubResource("CurveTexture_j72ht")
+
+[node name="Pawarticulas" type="GPUParticles2D"]
+emitting = false
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_7dnqd")
+texture = ExtResource("1_fs8mc")
+lifetime = 0.55
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("2_w7ua5")
