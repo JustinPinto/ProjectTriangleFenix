@@ -6,22 +6,14 @@ var aceleration = 1000
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot: Node2D = $pivot
 
-var enemy_inattack_range = false
-var enemy_attack_cooldown = true
-
-var health = 100:
-	set(value):
-		health = value
-#		if (health_bar):
-#			health_bar.value = health
-		
+@onready var enemigoprueba = $"../enemigoprueba"
+@export var sprite2D : Sprite2D
 
 @onready var agua_spawn: Marker2D = $pivot/AguaSpawn
 @onready var attack_cooldown: Timer = $Attack_cooldown
 
 @export var agua_gpu_scene : PackedScene
 
-var player_alive = true
 @export var attacking = false 
 
 func _ready() -> void:
@@ -37,6 +29,7 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2.ZERO
 	
+<<<<<<< Updated upstream
 	enemy_attack()
 	
 	if health <= 0:
@@ -45,11 +38,14 @@ func _physics_process(delta):
 		Debug.dprint("Juego terminado :(")
 		self.queue_free()
 	
+=======
+>>>>>>> Stashed changes
 	if move_input.x != 0 and not attacking: #para que se quede mirando al lado correcta a pesar de frenar
 		pivot.scale.x = sign(move_input.x)
 		
 	# Animation
 	if attacking:
+
 		playback.travel("attack")
 		$Attack_cooldown.start()
 		Global.player_current_attack = true
@@ -71,9 +67,20 @@ func tirar_agua():
 func _process(_delta):
 	pass
 
+var duration = 1
+var oldModulate = self.modulate
 
 func _on_hitbox_awa_body_entered(body: Node2D) -> void:
 	Debug.dprint("eeee")
+	while duration != 0 :
+		body.modulate = Color(0,1,1)
+		print("Timer started.")
+		await get_tree().create_timer(1.0).timeout
+		print("Timer ended.")
+		duration = 0
+		body.modulate = oldModulate
+	duration = 1 	
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
@@ -84,26 +91,3 @@ func _on_attack_cooldown_timeout() -> void:
 #	attacking = false
 #	Global.player_current_attack = false
 	
-func take_damage():
-	Debug.dprint(health)
-	health -= 10
-
-
-
-func _on_area_2d_body_entered(body):
-	if body.has_method("enemy"):
-		enemy_inattack_range = true
-		
-func _on_area_2d_body_exited(body):
-	if body.has_method("enemy"):
-		enemy_inattack_range = false
-		
-func enemy_attack():
-	if enemy_inattack_range and enemy_attack_cooldown == true:
-		health = health - 20
-		enemy_attack_cooldown = false
-		$enemy_attack_cooldown.start()
-		print(health)
-		
-func _on_enemy_attack_cooldown_timeout():
-	enemy_attack_cooldown = true
