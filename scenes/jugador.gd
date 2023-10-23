@@ -42,7 +42,7 @@ func _physics_process(delta):
 	if health <= 0:
 		player_alive = false
 		health = 0
-		Debug.dprint("Juego terminado :()")
+		Debug.dprint("Juego terminado :(")
 		self.queue_free()
 	
 	if move_input.x != 0 and not attacking: #para que se quede mirando al lado correcta a pesar de frenar
