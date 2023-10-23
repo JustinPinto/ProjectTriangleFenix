@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://doram5416i8ln"]
+[gd_scene load_steps=22 format=3 uid="uid://doram5416i8ln"]
 
 [ext_resource type="Script" path="res://scenes/jugador.gd" id="1_08ii7"]
 [ext_resource type="Texture2D" uid="uid://ctd2c6qigo1je" path="res://Female Character/SpriteSheets/01 Idle.png" id="1_geqac"]
@@ -7,12 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://dqn6f10s4ddfp" path="res://Female Character/SpriteSheets/02 Run.png" id="4_ycmfu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c771w"]
-radius = 6.21527
+radius = 6.21525
 height = 12.4305
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w2fme"]
-radius = 9.0
-height = 44.0
+radius = 11.0
+height = 60.0
 
 [sub_resource type="Animation" id="Animation_v4hkc"]
 resource_name = "Idle"
@@ -272,6 +272,10 @@ states/run/position = Vector2(509, 183)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fsvce"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_ybwxa"), "Idle", "attack", SubResource("AnimationNodeStateMachineTransition_mo8e0"), "attack", "Idle", SubResource("AnimationNodeStateMachineTransition_7frpe"), "run", "Idle", SubResource("AnimationNodeStateMachineTransition_6ecgr")]
 graph_offset = Vector2(0, 37.4386)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_laewv"]
+radius = 14.0
+height = 68.0
+
 [node name="Jugador" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_08ii7")
@@ -299,7 +303,6 @@ shape = SubResource("CapsuleShape2D_c771w")
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_w2fme")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -314,5 +317,16 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="Attack_cooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_laewv")
+
+[node name="enemy_attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_entered" from="pivot/HitboxAwa" to="." method="_on_hitbox_awa_body_entered"]
 [connection signal="timeout" from="Attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="enemy_attack_cooldown" to="." method="_on_enemy_attack_cooldown_timeout"]

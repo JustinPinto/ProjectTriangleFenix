@@ -1,17 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://bclo58dxhbypu"]
+[gd_scene load_steps=5 format=3 uid="uid://bclo58dxhbypu"]
 
-[ext_resource type="Texture2D" uid="uid://byxvk7pjl8cu0" path="res://icon.svg" id="1_s2h0u"]
 [ext_resource type="Script" path="res://scenes/enemigoprueba.gd" id="1_s64nf"]
+[ext_resource type="Texture2D" uid="uid://vxkpla051rtb" path="res://enemigo.png" id="2_yc5fi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqo7f"]
-size = Vector2(132.5, 131.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_busdl"]
+radius = 34.5579
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s4pxu"]
+radius = 42.19
 
 [node name="enemigoprueba" type="CharacterBody2D"]
 script = ExtResource("1_s64nf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.25, -0.75)
-shape = SubResource("RectangleShape2D_vqo7f")
+position = Vector2(1.5, -6)
+shape = SubResource("CircleShape2D_busdl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_s2h0u")
+texture = ExtResource("2_yc5fi")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(1, -7)
+shape = SubResource("CircleShape2D_s4pxu")
