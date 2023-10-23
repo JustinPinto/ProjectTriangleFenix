@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cc8sof2x818gq"]
+[gd_scene load_steps=10 format=3 uid="uid://cc8sof2x818gq"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_3n1ow"]
 [ext_resource type="Texture2D" uid="uid://bs5pwxjwni76f" path="res://housetileset.png" id="1_ms1ud"]
 [ext_resource type="PackedScene" uid="uid://doram5416i8ln" path="res://scenes/jugador.tscn" id="3_aajl1"]
 [ext_resource type="PackedScene" uid="uid://bclo58dxhbypu" path="res://scenes/enemigoprueba.tscn" id="3_rf8ig"]
-[ext_resource type="PackedScene" uid="uid://bqxqrw5xuidrs" path="res://scenes/pantalon.tscn" id="4_7bfmf"]
+[ext_resource type="Texture2D" uid="uid://clijxmxbqvnhe" path="res://Female Character/spriteMona/idle_hacia_derecha.png" id="5_alrt7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mxfuo"]
 texture = ExtResource("1_ms1ud")
@@ -385,7 +385,6 @@ layer_0/tile_data = PackedInt32Array(458769, 983040, 13, 458768, 983040, 13, 458
 position = Vector2(444, 311)
 
 [node name="enemigoprueba" parent="." instance=ExtResource("3_rf8ig")]
-
 position = Vector2(728, 320)
 
 [node name="Window" type="Window" parent="."]
@@ -454,5 +453,3 @@ layout_mode = 2
 text = "D"
 
 [connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
-
-
