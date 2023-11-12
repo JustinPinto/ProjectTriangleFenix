@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxi2tt17evmfs"]
+
+[ext_resource type="Texture2D" uid="uid://clijxmxbqvnhe" path="res://Female Character/spriteMona/idle_hacia_derecha.png" id="1_i3lji"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqscf"]
+bg_color = Color(0.458824, 0.615686, 0.784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1xyl"]
+bg_color = Color(0.243137, 0.678431, 0.639216, 1)
+
+[node name="Window" type="Window"]
+title = "popup"
+initial_position = 1
+size = Vector2i(700, 500)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera2D/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rqscf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="PanelContainer2" type="PanelContainer" parent="Camera2D/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Camera2D/MarginContainer/PanelContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "¡Realiza la combinación de teclas!
+W, W, A, D, S, W"
+
+[node name="PanelContainer3" type="PanelContainer" parent="Camera2D/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/MarginContainer/PanelContainer/VBoxContainer/PanelContainer3"]
+position = Vector2(0, -123)
+texture = ExtResource("1_i3lji")
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera2D/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1xyl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="W" type="Button" parent="Camera2D/MarginContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+action_mode = 0
+keep_pressed_outside = true
+text = "W"
+
+[node name="A" type="Button" parent="Camera2D/MarginContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "A"
+
+[node name="S" type="Button" parent="Camera2D/MarginContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "S"
+
+[node name="D" type="Button" parent="Camera2D/MarginContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "D"

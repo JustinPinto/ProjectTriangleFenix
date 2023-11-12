@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://doram5416i8ln"]
+[gd_scene load_steps=23 format=3 uid="uid://doram5416i8ln"]
 
 [ext_resource type="Script" path="res://scenes/jugador.gd" id="1_08ii7"]
 [ext_resource type="Texture2D" uid="uid://ctd2c6qigo1je" path="res://Female Character/SpriteSheets/01 Idle.png" id="1_geqac"]
 [ext_resource type="PackedScene" uid="uid://cp4534vc2hj3u" path="res://scenes/pawarticulas.tscn" id="2_7dlfj"]
 [ext_resource type="Texture2D" uid="uid://cyx033mxuis2r" path="res://Female Character/SpriteSheets/Attack/Female Character Attack 01.png" id="2_q1pin"]
 [ext_resource type="Texture2D" uid="uid://dqn6f10s4ddfp" path="res://Female Character/SpriteSheets/02 Run.png" id="4_ycmfu"]
+[ext_resource type="PackedScene" uid="uid://b411ilha5n6yc" path="res://scenes/menu_pausa.tscn" id="6_643qp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c771w"]
 radius = 6.21525
@@ -324,6 +325,11 @@ shape = SubResource("CapsuleShape2D_laewv")
 
 [node name="enemy_attack_cooldown" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuPausa" parent="CanvasLayer" instance=ExtResource("6_643qp")]
+process_mode = 3
 
 [connection signal="body_entered" from="pivot/HitboxAwa" to="." method="_on_hitbox_awa_body_entered"]
 [connection signal="timeout" from="Attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
