@@ -48,7 +48,7 @@ func take_damage():
 	
 
 
-func setMojado() -> void:
+func setMojado(f) -> void:
 	if (mojado == false and espumado == false and arrugado == false || mojado == true):
 		$Timer.start()
 		sprite_2d.modulate = Color(0.1,0,0.4)

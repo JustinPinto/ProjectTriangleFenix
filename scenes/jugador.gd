@@ -1,10 +1,11 @@
 extends CharacterBody2D
-@export var speed = 150
+@export var speed = 500
 var aceleration = 1000
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot: Node2D = $pivot
+@onready var health_bar = $CanvasLayer/mona_vida
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
@@ -12,8 +13,8 @@ var enemy_attack_cooldown = true
 var health = 100:
 	set(value):
 		health = value
-#		if (health_bar):
-#			health_bar.value = health
+		if (health_bar):
+			health_bar.set_health(health)
 		
 
 @onready var agua_spawn: Marker2D = $pivot/AguaSpawn
@@ -27,13 +28,15 @@ var player_alive = true
 func _ready() -> void:
 	animation_tree.active = true
 	attacking = false
+	health_bar.set_health(health)
+	Global.player = self
 	
 func _physics_process(delta):
 	#var move_input = Input.get_axis("left","right")
 	var move_input = Input.get_vector("left", "right", "up", "down")
 	if not attacking:
-		velocity.x = move_toward(velocity.x,speed*move_input.x,aceleration*delta)
-		velocity.y = move_toward(velocity.y,speed*move_input.y,aceleration*delta)
+		velocity.x = move_toward(velocity.x,speed*move_input.x,aceleration)
+		velocity.y = move_toward(velocity.y,speed*move_input.y,aceleration)
 	else:
 		velocity = Vector2.ZERO
 	
@@ -72,17 +75,38 @@ func _process(_delta):
 	pass
 
 var duration = 1
-var oldModulate = self.modulate
 
+
+## ATAQUE CON BALDE
 func _on_hitbox_awa_body_entered(body: Node2D) -> void:
-	while duration != 0 :
-		body.modulate = Color(0,1,1)
-		print("Timer started.")
-		await get_tree().create_timer(1.0).timeout
-		print("Timer ended.")
-		duration = 0
-		body.modulate = oldModulate
-	duration = 1 	
+	## cuando el enemigo no tiene ningun estado encima, y lo ataca con el balde
+	## if mojado and espumado and arrugado = false and balde
+	body.setMojado()
+	body.take_damage()
+	
+
+## ATAQUE CON DETERGENTE
+func _on_hitbox_espuma_body_entered(body: Node2D) -> void:
+	## cuando el enemigo esta mojado, y lo ataca con el detergente
+	body.setDetergente(body)
+	body.take_damage()
+
+	
+
+##ATAQUE CON ESCOBILLA
+func _on_hitbox_arruga_body_entered(body: Node2D) -> void:
+	## cuando el enemigo esta espumado, y lo ataca con la escobilla
+	## if detergente and body.espuma = true
+	body.setEscobilla(body)
+	body.take_damage()
+	
+
+
+
+
+
+
+
 
 
 func _input(event: InputEvent) -> void:
@@ -110,7 +134,7 @@ func _on_area_2d_body_exited(body):
 		
 func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
-		health = health - 20
+		health = health - 10
 		enemy_attack_cooldown = false
 		$enemy_attack_cooldown.start()
 		print(health)

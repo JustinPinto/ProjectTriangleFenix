@@ -20,6 +20,13 @@ config/icon="res://icon.svg"
 Debug="*res://scripts/debug.gd"
 Global="*res://global.gd"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=3
+window/stretch/mode="canvas_items"
+
 [gui]
 
 theme/custom="res://resources/new_theme.tres"
