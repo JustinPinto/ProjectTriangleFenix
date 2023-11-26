@@ -1,13 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcf0g7nmomwre"]
+[gd_scene load_steps=8 format=3 uid="uid://dcf0g7nmomwre"]
 
-[ext_resource type="Texture2D" uid="uid://bs5pwxjwni76f" path="res://housetileset.png" id="1_ms1ud"]
-[ext_resource type="Texture2D" uid="uid://5amxbl77ry81" path="res://Furnitures_v1.png" id="2_rvv5k"]
 [ext_resource type="PackedScene" uid="uid://doram5416i8ln" path="res://scenes/jugador.tscn" id="3_aajl1"]
 [ext_resource type="Texture2D" uid="uid://byxvk7pjl8cu0" path="res://icon.svg" id="3_ld850"]
-[ext_resource type="Texture2D" uid="uid://bywyq43h303q0" path="res://tileset.png" id="3_m825n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_duxlt"]
-texture = ExtResource("1_ms1ud")
 15:20/0 = 0
 14:20/0 = 0
 14:21/0 = 0
@@ -22,7 +18,6 @@ texture = ExtResource("1_ms1ud")
 7:18/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwdfr"]
-texture = ExtResource("2_rvv5k")
 4:4/0 = 0
 3:4/0 = 0
 3:3/0 = 0
@@ -44,7 +39,6 @@ texture = ExtResource("2_rvv5k")
 18:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_55a53"]
-texture = ExtResource("3_m825n")
 0:0/0 = 0
 0:1/0 = 0
 

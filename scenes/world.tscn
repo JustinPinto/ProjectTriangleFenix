@@ -64,7 +64,7 @@ metadata/_edit_group_ = true
 shape = SubResource("WorldBoundaryShape2D_35w3g")
 
 [node name="arriba" type="StaticBody2D" parent="."]
-position = Vector2(748, 261)
+position = Vector2(746, 173)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arriba"]
@@ -82,7 +82,9 @@ shape = SubResource("WorldBoundaryShape2D_vjeig")
 position = Vector2(339, 383)
 
 [node name="Cubo" parent="." instance=ExtResource("8_nerta")]
-position = Vector2(178, 427)
+position = Vector2(195, 369)
+scale = Vector2(3, 3)
 
 [node name="Esponja" parent="." instance=ExtResource("9_8m7hn")]
 position = Vector2(107, 474)
+scale = Vector2(4, 4)

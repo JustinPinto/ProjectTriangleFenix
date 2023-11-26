@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b276lqabup0y1" path="res://resources/pickups/balde.png" id="2_cppwf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wo8x5"]
-radius = 24.6982
+radius = 18.0278
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_20k13")
@@ -13,6 +13,7 @@ script = ExtResource("1_20k13")
 texture = ExtResource("2_cppwf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 8)
 shape = SubResource("CircleShape2D_wo8x5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
