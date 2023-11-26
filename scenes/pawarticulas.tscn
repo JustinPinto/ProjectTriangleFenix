@@ -41,6 +41,7 @@ color_ramp = SubResource("GradientTexture1D_l3s3w")
 hue_variation_curve = SubResource("CurveTexture_j72ht")
 
 [node name="Pawarticulas" type="GPUParticles2D"]
+scale = Vector2(3, 3)
 emitting = false
 amount = 400
 process_material = SubResource("ParticleProcessMaterial_7dnqd")

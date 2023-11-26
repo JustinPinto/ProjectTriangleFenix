@@ -9,6 +9,8 @@ var aceleration = 1000
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
+var taking_damage = false
+
 
 var health = 100:
 	set(value):
@@ -39,10 +41,12 @@ func _physics_process(delta):
 		if not attacking:
 			velocity.x = move_toward(velocity.x,speed*move_input.x,aceleration)
 			velocity.y = move_toward(velocity.y,speed*move_input.y,aceleration)
-		else:
-			velocity = Vector2.ZERO
+		else:	
+			velocity.x = move_toward(velocity.x,speed*move_input.x* 0.4,aceleration)
+			velocity.y = move_toward(velocity.y,speed*move_input.y* 0.4,aceleration)
 		
 		enemy_attack()
+	
 		
 		if health <= 0:
 			player_alive = false
@@ -59,12 +63,17 @@ func _physics_process(delta):
 			$Attack_cooldown.start()
 			Global.player_current_attack = true
 			
+		elif taking_damage == true:
+			playback.travel("daño")
+						
 		elif move_input.x != 0 or move_input.y != 0:
 			playback.travel("run")
+			
 
+		
 		else:
 			playback.travel("Idle")
-		
+			
 		move_and_slide()
 
 	
@@ -116,10 +125,7 @@ func _on_attack_cooldown_timeout() -> void:
 	pass
 #	attacking = false
 #	Global.player_current_attack = false
-	
-func take_damage():
-	Debug.dprint(health)
-	health -= 10
+
 
 func _on_area_2d_body_entered(body):
 	if body.has_method("enemy"):
@@ -131,10 +137,13 @@ func _on_area_2d_body_exited(body):
 		
 func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
+		taking_damage = true
 		health = health - 10
 		enemy_attack_cooldown = false
 		$enemy_attack_cooldown.start()
 		print(health)
+	else: 
+		taking_damage = false	
 		
 func _on_enemy_attack_cooldown_timeout():
 	enemy_attack_cooldown = true

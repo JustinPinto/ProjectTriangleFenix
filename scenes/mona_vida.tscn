@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3mep4p1tfwl7"]
 
 [ext_resource type="Script" path="res://scripts/mona_vida.gd" id="1_mysue"]
-[ext_resource type="Texture2D" uid="uid://cgxhxi7kdx1lw" path="res://resources/Hearths/health_bar/health_bar2.png" id="3_blrf4"]
-[ext_resource type="Texture2D" uid="uid://dpw3my26dx4dg" path="res://resources/Hearths/health_bar/health_bar_decoration-sheet.png" id="3_p54f5"]
+[ext_resource type="Texture2D" uid="uid://r8apdfwqbkww" path="res://resources/Hearths/corazoncitoamarillo.png" id="2_h53vi"]
+[ext_resource type="Texture2D" uid="uid://c02j4j463ky0i" path="res://resources/Hearths/corazoncitoamarillovida.png" id="3_8s7m1"]
 
 [node name="mona_vida" type="MarginContainer"]
 offset_right = 324.0
@@ -19,5 +19,5 @@ layout_mode = 2
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 nine_patch_stretch = true
-texture_over = ExtResource("3_p54f5")
-texture_progress = ExtResource("3_blrf4")
+texture_over = ExtResource("2_h53vi")
+texture_progress = ExtResource("3_8s7m1")

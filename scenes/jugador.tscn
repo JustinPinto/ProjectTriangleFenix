@@ -1,16 +1,17 @@
-[gd_scene load_steps=25 format=3 uid="uid://doram5416i8ln"]
+[gd_scene load_steps=32 format=3 uid="uid://doram5416i8ln"]
 
 [ext_resource type="Script" path="res://scripts/jugador.gd" id="1_08ii7"]
 [ext_resource type="PackedScene" uid="uid://cp4534vc2hj3u" path="res://scenes/pawarticulas.tscn" id="2_7dlfj"]
 [ext_resource type="Texture2D" uid="uid://cyx033mxuis2r" path="res://Female Character/SpriteSheets/Attack/Female Character Attack 01.png" id="2_q1pin"]
 [ext_resource type="Texture2D" uid="uid://baxa2311vwwyr" path="res://resources/idleporfavor.png" id="3_aha5c"]
+[ext_resource type="Texture2D" uid="uid://bci7vtpqcd4qc" path="res://resources/caradeau.png" id="3_xqg34"]
 [ext_resource type="Texture2D" uid="uid://n4yk4a1180tl" path="res://resources/correrporfavor.png" id="5_rp4rw"]
 [ext_resource type="PackedScene" uid="uid://b411ilha5n6yc" path="res://scenes/menu_pausa.tscn" id="6_643qp"]
 [ext_resource type="PackedScene" uid="uid://b3mep4p1tfwl7" path="res://scenes/mona_vida.tscn" id="7_v5yhv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c771w"]
-radius = 6.21525
-height = 12.4305
+radius = 17.9419
+height = 35.8838
 
 [sub_resource type="Animation" id="Animation_v4hkc"]
 resource_name = "Idle"
@@ -90,6 +91,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot/Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_xqg34")]
 }
 
 [sub_resource type="Animation" id="Animation_t5a5o"]
@@ -246,11 +283,64 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_j068x"]
+resource_name = "daño"
+length = 0.29
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot/Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_xqg34")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8e46w"]
 _data = {
 "Idle": SubResource("Animation_v4hkc"),
 "RESET": SubResource("Animation_4opmq"),
 "attack": SubResource("Animation_t5a5o"),
+"daño": SubResource("Animation_j068x"),
 "run": SubResource("Animation_wb6dm")
 }
 
@@ -259,6 +349,9 @@ animation = &"Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_knlnm"]
 animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_83o15"]
+animation = &"daño"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4s8jg"]
 animation = &"run"
@@ -270,21 +363,34 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mo8e0"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7frpe"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ecgr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cal2g"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4vm4d"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o1e7e"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gqhxl"]
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ecgr"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8c7sv"]
+switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uurf3"]
 states/Idle/node = SubResource("AnimationNodeAnimation_50cha")
-states/Idle/position = Vector2(420, 99.7778)
+states/Idle/position = Vector2(364, 58.4445)
+states/Start/position = Vector2(144, 58.6667)
 states/attack/node = SubResource("AnimationNodeAnimation_knlnm")
-states/attack/position = Vector2(636, 100.667)
+states/attack/position = Vector2(580, 59.3337)
+"states/daño/node" = SubResource("AnimationNodeAnimation_83o15")
+"states/daño/position" = Vector2(581.395, 193.863)
 states/run/node = SubResource("AnimationNodeAnimation_4s8jg")
-states/run/position = Vector2(509, 183)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fsvce"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_ybwxa"), "Idle", "attack", SubResource("AnimationNodeStateMachineTransition_mo8e0"), "attack", "Idle", SubResource("AnimationNodeStateMachineTransition_7frpe"), "run", "Idle", SubResource("AnimationNodeStateMachineTransition_6ecgr")]
-graph_offset = Vector2(0, 37.4386)
+states/run/position = Vector2(195.667, 195.088)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fsvce"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_ybwxa"), "Idle", "attack", SubResource("AnimationNodeStateMachineTransition_mo8e0"), "run", "Idle", SubResource("AnimationNodeStateMachineTransition_6ecgr"), "Idle", "daño", SubResource("AnimationNodeStateMachineTransition_cal2g"), "run", "daño", SubResource("AnimationNodeStateMachineTransition_4vm4d"), "attack", "daño", SubResource("AnimationNodeStateMachineTransition_o1e7e"), "daño", "Idle", SubResource("AnimationNodeStateMachineTransition_gqhxl"), "attack", "Idle", SubResource("AnimationNodeStateMachineTransition_8c7sv")]
+graph_offset = Vector2(37.0858, 41.3013)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w2fme"]
 radius = 16.087
@@ -305,8 +411,7 @@ attacking = true
 [node name="Sprite2D" type="Sprite2D" parent="pivot"]
 position = Vector2(0, -10)
 scale = Vector2(2, 2.032)
-texture = ExtResource("3_aha5c")
-hframes = 4
+texture = ExtResource("3_xqg34")
 frame = 1
 
 [node name="AguaSpawn" type="Marker2D" parent="pivot"]
@@ -315,7 +420,7 @@ position = Vector2(59, 0)
 [node name="HitboxAwa" type="Area2D" parent="pivot"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/HitboxAwa"]
-position = Vector2(68, 1)
+position = Vector2(166, 1)
 rotation = 1.58798
 scale = Vector2(3.75812, 11.0945)
 shape = SubResource("CapsuleShape2D_c771w")
@@ -355,6 +460,7 @@ wait_time = 0.5
 process_mode = 3
 
 [node name="mona_vida" parent="CanvasLayer" instance=ExtResource("7_v5yhv")]
+scale = Vector2(1.5, 1.5)
 
 [connection signal="body_entered" from="pivot/HitboxAwa" to="." method="_on_hitbox_awa_body_entered"]
 [connection signal="timeout" from="Attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
