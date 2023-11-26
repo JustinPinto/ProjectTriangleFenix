@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5amxbl77ry81"
-path="res://.godot/imported/Furnitures_v1.png-3e0f517b7bcc32771053b2e8ba38d4d6.ctex"
+uid="uid://cmfoiobv87lcu"
+path="res://.godot/imported/pantalon.png-c8be79ec671e2ad32cbf377f33e46cba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Furnitures_v1.png"
-dest_files=["res://.godot/imported/Furnitures_v1.png-3e0f517b7bcc32771053b2e8ba38d4d6.ctex"]
+source_file="res://resources/pantalon.png"
+dest_files=["res://.godot/imported/pantalon.png-c8be79ec671e2ad32cbf377f33e46cba.ctex"]
 
 [params]
 

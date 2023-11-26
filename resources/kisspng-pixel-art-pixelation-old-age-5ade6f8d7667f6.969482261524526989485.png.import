@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmfoiobv87lcu"
-path="res://.godot/imported/pantalon.png-4089699917f25ffbf56ead1db4f2428f.ctex"
+uid="uid://bu4cnl3d8m32x"
+path="res://.godot/imported/kisspng-pixel-art-pixelation-old-age-5ade6f8d7667f6.969482261524526989485.png-c7a6716cfb974fb984bf6d9420f0d7ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pantalon.png"
-dest_files=["res://.godot/imported/pantalon.png-4089699917f25ffbf56ead1db4f2428f.ctex"]
+source_file="res://resources/kisspng-pixel-art-pixelation-old-age-5ade6f8d7667f6.969482261524526989485.png"
+dest_files=["res://.godot/imported/kisspng-pixel-art-pixelation-old-age-5ade6f8d7667f6.969482261524526989485.png-c7a6716cfb974fb984bf6d9420f0d7ae.ctex"]
 
 [params]
 

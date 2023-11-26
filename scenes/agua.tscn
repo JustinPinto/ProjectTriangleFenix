@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://csvd0yrhp4ef1"]
 
-[ext_resource type="Script" path="res://Agua.gd" id="1_nki3q"]
-[ext_resource type="Texture2D" uid="uid://bu4cnl3d8m32x" path="res://kisspng-pixel-art-pixelation-old-age-5ade6f8d7667f6.969482261524526989485.png" id="2_w05fx"]
+[ext_resource type="Script" path="res://scripts/Agua.gd" id="1_nki3q"]
+[ext_resource type="Texture2D" uid="uid://bu4cnl3d8m32x" path="res://resources/kisspng-pixel-art-pixelation-old-age-5ade6f8d7667f6.969482261524526989485.png" id="2_w05fx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxrjf"]
 radius = 34.8574

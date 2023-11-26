@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cp4534vc2hj3u"]
 
 [ext_resource type="Texture2D" uid="uid://bkrgyh7iclyae" path="res://scenes/lanzar_awa/awa.png" id="1_fs8mc"]
-[ext_resource type="Script" path="res://scenes/pawarticulas.gd" id="2_w7ua5"]
+[ext_resource type="Script" path="res://scripts/pawarticulas.gd" id="2_w7ua5"]
 
 [sub_resource type="Gradient" id="Gradient_qs4ml"]
 offsets = PackedFloat32Array(0, 0.512887, 1)

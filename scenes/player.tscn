@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://dussoan6wcvvf"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_apujt"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_apujt"]
 [ext_resource type="Texture2D" uid="uid://ctd2c6qigo1je" path="res://Female Character/SpriteSheets/01 Idle.png" id="1_v81in"]
 [ext_resource type="Texture2D" uid="uid://dqn6f10s4ddfp" path="res://Female Character/SpriteSheets/02 Run.png" id="2_f21g1"]
 [ext_resource type="Texture2D" uid="uid://m5van6fh5say" path="res://Female Character/SpriteSheets/Attack/Female Character Attack 02.png" id="2_g4eci"]

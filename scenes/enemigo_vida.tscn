@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccuc514f4qega"]
 
-[ext_resource type="Script" path="res://EnemigoVida.gd" id="1_qsoii"]
-[ext_resource type="Script" path="res://scenes/HealthBar.gd" id="2_sa5uh"]
+[ext_resource type="Script" path="res://scripts/EnemigoVida.gd" id="1_qsoii"]
+[ext_resource type="Script" path="res://scripts/HealthBar.gd" id="2_sa5uh"]
 
 [node name="EnemigoVida" type="MarginContainer"]
 anchors_preset = 15

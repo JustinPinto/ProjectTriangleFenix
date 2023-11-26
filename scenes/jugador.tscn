@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://doram5416i8ln"]
 
-[ext_resource type="Script" path="res://scenes/jugador.gd" id="1_08ii7"]
+[ext_resource type="Script" path="res://scripts/jugador.gd" id="1_08ii7"]
 [ext_resource type="PackedScene" uid="uid://cp4534vc2hj3u" path="res://scenes/pawarticulas.tscn" id="2_7dlfj"]
 [ext_resource type="Texture2D" uid="uid://cyx033mxuis2r" path="res://Female Character/SpriteSheets/Attack/Female Character Attack 01.png" id="2_q1pin"]
 [ext_resource type="Texture2D" uid="uid://baxa2311vwwyr" path="res://resources/idleporfavor.png" id="3_aha5c"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bclo58dxhbypu"]
 
-[ext_resource type="Script" path="res://scenes/enemigoprueba.gd" id="1_s64nf"]
-[ext_resource type="Texture2D" uid="uid://vxkpla051rtb" path="res://enemigo.png" id="2_yc5fi"]
+[ext_resource type="Script" path="res://scripts/enemigoprueba.gd" id="1_s64nf"]
+[ext_resource type="Texture2D" uid="uid://vxkpla051rtb" path="res://resources/enemigo.png" id="2_yc5fi"]
 [ext_resource type="PackedScene" uid="uid://ccuc514f4qega" path="res://scenes/enemigo_vida.tscn" id="3_v2jua"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_busdl"]
