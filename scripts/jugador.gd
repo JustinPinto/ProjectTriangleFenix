@@ -25,6 +25,7 @@ var health = 100:
 var player_alive = true
 @export var attacking = false 
 
+
 func _ready() -> void:
 	animation_tree.active = true
 	attacking = false
@@ -33,38 +34,38 @@ func _ready() -> void:
 	
 func _physics_process(delta):
 	#var move_input = Input.get_axis("left","right")
-	var move_input = Input.get_vector("left", "right", "up", "down")
-	if not attacking:
-		velocity.x = move_toward(velocity.x,speed*move_input.x,aceleration)
-		velocity.y = move_toward(velocity.y,speed*move_input.y,aceleration)
-	else:
-		velocity = Vector2.ZERO
-	
-	enemy_attack()
-	
-	if health <= 0:
-		player_alive = false
-		health = 0
-		Debug.dprint("Juego terminado :(")
-		self.queue_free()
-	
-	if move_input.x != 0 and not attacking: #para que se quede mirando al lado correcta a pesar de frenar
-		pivot.scale.x = sign(move_input.x)
+	if player_alive:
+		var move_input = Input.get_vector("left", "right", "up", "down")
+		if not attacking:
+			velocity.x = move_toward(velocity.x,speed*move_input.x,aceleration)
+			velocity.y = move_toward(velocity.y,speed*move_input.y,aceleration)
+		else:
+			velocity = Vector2.ZERO
 		
-	# Animation
-	if attacking:
-		playback.travel("attack")
-		$Attack_cooldown.start()
-		Global.player_current_attack = true
+		enemy_attack()
 		
-	elif move_input.x != 0 or move_input.y != 0:
-		playback.travel("run")
+		if health <= 0:
+			player_alive = false
+			health = 0
+			Debug.dprint("Juego terminado :(")
+			self.hide()
+		
+		if move_input.x != 0 and not attacking: # para que se quede mirando al lado correcta a pesar de frenar
+			pivot.scale.x = sign(move_input.x)
+			
+		# Animation
+		if attacking:
+			playback.travel("attack")
+			$Attack_cooldown.start()
+			Global.player_current_attack = true
+			
+		elif move_input.x != 0 or move_input.y != 0:
+			playback.travel("run")
 
-	else:
-		playback.travel("Idle")
-	
-#
-	move_and_slide()
+		else:
+			playback.travel("Idle")
+		
+		move_and_slide()
 
 	
 func tirar_agua():
@@ -81,33 +82,31 @@ var duration = 1
 func _on_hitbox_awa_body_entered(body: Node2D) -> void:
 	## cuando el enemigo no tiene ningun estado encima, y lo ataca con el balde
 	## if mojado and espumado and arrugado = false and balde
-	body.setMojado()
-	body.take_damage()
-	
+	if body.has_method("enemy"):
+		body.setMojado()
+		body.take_damage()
+		
 
 ## ATAQUE CON DETERGENTE
 func _on_hitbox_espuma_body_entered(body: Node2D) -> void:
 	## cuando el enemigo esta mojado, y lo ataca con el detergente
-	body.setDetergente(body)
-	body.take_damage()
+	if body.has_method("enemy"):
+		body.setDetergente(body)
+		body.take_damage()
 
 	
 
 ##ATAQUE CON ESCOBILLA
 func _on_hitbox_arruga_body_entered(body: Node2D) -> void:
 	## cuando el enemigo esta espumado, y lo ataca con la escobilla
-	## if detergente and body.espuma = true
-	body.setEscobilla(body)
-	body.take_damage()
-	
+	## if detergente and body.espuma = trued
+	if body.has_method("enemy"):
+		body.setEscobilla(body)
+		body.take_damage()
+		
 
-
-
-
-
-
-
-
+func player():
+	pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
@@ -121,8 +120,6 @@ func _on_attack_cooldown_timeout() -> void:
 func take_damage():
 	Debug.dprint(health)
 	health -= 10
-
-
 
 func _on_area_2d_body_entered(body):
 	if body.has_method("enemy"):

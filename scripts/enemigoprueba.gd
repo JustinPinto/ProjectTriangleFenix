@@ -74,15 +74,8 @@ func setEscobilla() -> void:
 		Debug.dprint("arrugado")
 		sprite_2d.modulate = Color(54,77,0)
 
-
-
-
-
-	
-
 func enemy():
 	pass
-
 
 func _on_timer_timeout():
 	if not mojado:
