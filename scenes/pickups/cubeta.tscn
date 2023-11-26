@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1100mmtuuhhg"]
+[gd_scene load_steps=6 format=3 uid="uid://c1100mmtuuhhg"]
 
 [ext_resource type="Script" path="res://scenes/pickups/cubeta.gd" id="1_20k13"]
+[ext_resource type="PackedScene" uid="uid://dussoan6wcvvf" path="res://scenes/player.tscn" id="2_2nhco"]
 [ext_resource type="Texture2D" uid="uid://b276lqabup0y1" path="res://resources/pickups/balde.png" id="2_cppwf"]
 [ext_resource type="Texture2D" uid="uid://ds53a55dqsrji" path="res://resources/pickups/bordebalde.png" id="3_2dbud"]
 
@@ -9,6 +10,7 @@ radius = 18.0278
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_20k13")
+jugador = ExtResource("2_2nhco")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_cppwf")

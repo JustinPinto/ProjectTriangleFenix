@@ -19,6 +19,7 @@ shape = SubResource("CircleShape2D_wo8x5")
 
 [node name="borde" type="Sprite2D" parent="."]
 visible = false
+position = Vector2(2, -27)
 texture = ExtResource("3_0d5b4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

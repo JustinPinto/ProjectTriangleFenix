@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbh2vrynr4gd4"]
+
+[ext_resource type="Script" path="res://scenes/pickups/cubeta.gd" id="1_enal2"]
+[ext_resource type="Texture2D" uid="uid://byxvk7pjl8cu0" path="res://icon.svg" id="2_5d7lo"]
+[ext_resource type="Texture2D" uid="uid://ds53a55dqsrji" path="res://resources/pickups/bordebalde.png" id="3_sctup"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wo8x5"]
+radius = 72.0625
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_enal2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5d7lo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 8)
+shape = SubResource("CircleShape2D_wo8x5")
+
+[node name="borde" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_sctup")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

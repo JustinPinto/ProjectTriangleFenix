@@ -47,7 +47,6 @@ func _physics_process(delta):
 		
 		enemy_attack()
 	
-		
 		if health <= 0:
 			player_alive = false
 			health = 0

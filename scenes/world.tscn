@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cc8sof2x818gq"]
+[gd_scene load_steps=15 format=3 uid="uid://cc8sof2x818gq"]
 
 [ext_resource type="Script" path="res://scenes/pickups/cubeta.gd" id="1_6ymi5"]
 [ext_resource type="Texture2D" uid="uid://b6cc4v0kanelk" path="res://resources/fondo2.png" id="2_fhp8q"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cfavhwsn8upkh" path="res://scenes/pickups/lejia.tscn" id="7_7in2s"]
 [ext_resource type="PackedScene" uid="uid://c1100mmtuuhhg" path="res://scenes/pickups/cubeta.tscn" id="8_nerta"]
 [ext_resource type="PackedScene" uid="uid://ijqnbquto8o6" path="res://scenes/pickups/esponja.tscn" id="9_8m7hn"]
+[ext_resource type="PackedScene" uid="uid://dbh2vrynr4gd4" path="res://scenes/pickups/trapo.tscn" id="10_15gnr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_336w2"]
 normal = Vector2(1, 0)
@@ -88,3 +89,6 @@ scale = Vector2(3, 3)
 [node name="Esponja" parent="." instance=ExtResource("9_8m7hn")]
 position = Vector2(107, 474)
 scale = Vector2(4, 4)
+
+[node name="Area2D" parent="." instance=ExtResource("10_15gnr")]
+position = Vector2(403, 268)
