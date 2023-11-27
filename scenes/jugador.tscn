@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/jugador.gd" id="1_08ii7"]
 [ext_resource type="PackedScene" uid="uid://cp4534vc2hj3u" path="res://scenes/pawarticulas.tscn" id="2_7dlfj"]
 [ext_resource type="Texture2D" uid="uid://cyx033mxuis2r" path="res://Female Character/SpriteSheets/Attack/Female Character Attack 01.png" id="2_q1pin"]
-[ext_resource type="Texture2D" uid="uid://baxa2311vwwyr" path="res://resources/idleporfavor.png" id="3_aha5c"]
 [ext_resource type="Texture2D" uid="uid://bci7vtpqcd4qc" path="res://resources/caradeau.png" id="3_xqg34"]
-[ext_resource type="Texture2D" uid="uid://n4yk4a1180tl" path="res://resources/correrporfavor.png" id="5_rp4rw"]
+[ext_resource type="Texture2D" uid="uid://ceg0od263cl3j" path="res://resources/respira3.png" id="4_3e642"]
+[ext_resource type="Texture2D" uid="uid://j7uoyhvch3hk" path="res://resources/correrporfavor4.png" id="6_24bcm"]
 [ext_resource type="PackedScene" uid="uid://b411ilha5n6yc" path="res://scenes/menu_pausa.tscn" id="6_643qp"]
 [ext_resource type="PackedScene" uid="uid://b3mep4p1tfwl7" path="res://scenes/mona_vida.tscn" id="7_v5yhv"]
 
@@ -15,67 +15,55 @@ height = 35.8838
 
 [sub_resource type="Animation" id="Animation_v4hkc"]
 resource_name = "Idle"
-length = 0.4
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("pivot/Sprite2D:frame")
+tracks/0/path = NodePath("pivot/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [ExtResource("4_3e642")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Sprite2D:texture")
+tracks/1/path = NodePath("pivot/Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_aha5c")]
+"values": [12]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("pivot/Sprite2D:hframes")
+tracks/2/path = NodePath("pivot/Sprite2D:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("pivot/Sprite2D:vframes")
+tracks/3/path = NodePath("pivot/Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("pivot/Sprite2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -10)]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
 [sub_resource type="Animation" id="Animation_4opmq"]
@@ -284,7 +272,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_wb6dm"]
 resource_name = "run"
-length = 0.4
+length = 0.85
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -296,31 +284,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_rp4rw")]
+"values": [ExtResource("6_24bcm")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Sprite2D:position")
+tracks/1/path = NodePath("pivot/Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -8)]
+"update": 1,
+"values": [9]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("pivot/Sprite2D:hframes")
+tracks/2/path = NodePath("pivot/Sprite2D:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -329,10 +317,10 @@ tracks/3/path = NodePath("pivot/Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8e46w"]

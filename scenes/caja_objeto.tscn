@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3mhm1bv5yh6d"]
+
+[ext_resource type="Script" path="res://scenes/caja_objeto.gd" id="1_fjtwm"]
+[ext_resource type="Texture2D" uid="uid://bguc05q0p6hy1" path="res://resources/cajaObjeto.png" id="2_rikni"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xavtt"]
+atlas = ExtResource("2_rikni")
+region = Rect2(32, 32, 48, 48)
+
+[node name="Caja objeto" type="MarginContainer"]
+offset_right = 24.0
+offset_bottom = 18.0
+script = ExtResource("1_fjtwm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_xavtt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="herramienta" type="TextureRect" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1

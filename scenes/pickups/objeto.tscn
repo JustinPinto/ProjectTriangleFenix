@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6iewf7x5dru3"]
+
+[ext_resource type="Script" path="res://scenes/pickups/objeto.gd" id="1_o7n1j"]
+[ext_resource type="Shader" path="res://scenes/pickups/borde.gdshader" id="2_cb3yy"]
+[ext_resource type="Texture2D" uid="uid://b276lqabup0y1" path="res://resources/pickups/balde.png" id="2_okswk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8te8"]
+resource_local_to_scene = true
+shader = ExtResource("2_cb3yy")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wo8x5"]
+radius = 18.0278
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_o7n1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_r8te8")
+texture = ExtResource("2_okswk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 8)
+shape = SubResource("CircleShape2D_wo8x5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

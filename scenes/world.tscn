@@ -1,15 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://cc8sof2x818gq"]
+[gd_scene load_steps=16 format=3 uid="uid://cc8sof2x818gq"]
 
-[ext_resource type="Script" path="res://scenes/pickups/cubeta.gd" id="1_6ymi5"]
 [ext_resource type="Texture2D" uid="uid://b6cc4v0kanelk" path="res://resources/fondo2.png" id="2_fhp8q"]
 [ext_resource type="PackedScene" uid="uid://doram5416i8ln" path="res://scenes/jugador.tscn" id="3_aajl1"]
 [ext_resource type="PackedScene" uid="uid://bclo58dxhbypu" path="res://scenes/enemigoprueba.tscn" id="3_rf8ig"]
 [ext_resource type="PackedScene" uid="uid://cxi2tt17evmfs" path="res://scenes/window.tscn" id="5_bo4hd"]
 [ext_resource type="Script" path="res://scripts/Window.gd" id="6_bhn8n"]
-[ext_resource type="PackedScene" uid="uid://cfavhwsn8upkh" path="res://scenes/pickups/lejia.tscn" id="7_7in2s"]
-[ext_resource type="PackedScene" uid="uid://c1100mmtuuhhg" path="res://scenes/pickups/cubeta.tscn" id="8_nerta"]
-[ext_resource type="PackedScene" uid="uid://ijqnbquto8o6" path="res://scenes/pickups/esponja.tscn" id="9_8m7hn"]
-[ext_resource type="PackedScene" uid="uid://dbh2vrynr4gd4" path="res://scenes/pickups/trapo.tscn" id="10_15gnr"]
+[ext_resource type="PackedScene" uid="uid://be8ir8c5ug45c" path="res://scenes/pickups/cubeta.tscn" id="8_nerta"]
+[ext_resource type="PackedScene" uid="uid://cg87mnykbhcd0" path="res://scenes/pickups/esponja.tscn" id="9_8m7hn"]
+[ext_resource type="PackedScene" uid="uid://0b101lhue11t" path="res://scenes/pickups/detergente.tscn" id="9_gcrkk"]
+[ext_resource type="PackedScene" uid="uid://ctqahk8cohu4w" path="res://scenes/pickups/trapo.tscn" id="10_15gnr"]
+[ext_resource type="PackedScene" uid="uid://b3mhm1bv5yh6d" path="res://scenes/caja_objeto.tscn" id="11_7347r"]
+
+[sub_resource type="GDScript" id="GDScript_gs7e6"]
+script/source = "extends Objeto
+
+"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_336w2"]
 normal = Vector2(1, 0)
@@ -23,7 +28,7 @@ normal = Vector2(0, 1)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vjeig"]
 
 [node name="world" type="Node2D"]
-script = ExtResource("1_6ymi5")
+script = SubResource("GDScript_gs7e6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.952, 0.952)
@@ -79,16 +84,23 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="abajo"]
 shape = SubResource("WorldBoundaryShape2D_vjeig")
 
-[node name="Detergente" parent="." instance=ExtResource("7_7in2s")]
-position = Vector2(339, 383)
+[node name="Caja objeto" parent="." instance=ExtResource("11_7347r")]
+offset_left = 266.0
+offset_top = 11.0
+offset_right = 418.0
+offset_bottom = 157.0
 
-[node name="Cubo" parent="." instance=ExtResource("8_nerta")]
-position = Vector2(195, 369)
+[node name="cubeta" parent="." instance=ExtResource("8_nerta")]
+position = Vector2(118, 325)
+scale = Vector2(2, 2)
+
+[node name="esponja" parent="." instance=ExtResource("9_8m7hn")]
+position = Vector2(236, 499)
 scale = Vector2(3, 3)
 
-[node name="Esponja" parent="." instance=ExtResource("9_8m7hn")]
-position = Vector2(107, 474)
-scale = Vector2(4, 4)
+[node name="trapo" parent="." instance=ExtResource("10_15gnr")]
+position = Vector2(357, 341)
 
-[node name="Area2D" parent="." instance=ExtResource("10_15gnr")]
-position = Vector2(403, 268)
+[node name="detergente" parent="." instance=ExtResource("9_gcrkk")]
+position = Vector2(116, 476)
+scale = Vector2(2, 2)

@@ -1,25 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbh2vrynr4gd4"]
+[gd_scene load_steps=6 format=3 uid="uid://ctqahk8cohu4w"]
 
-[ext_resource type="Script" path="res://scenes/pickups/cubeta.gd" id="1_enal2"]
-[ext_resource type="Texture2D" uid="uid://byxvk7pjl8cu0" path="res://icon.svg" id="2_5d7lo"]
-[ext_resource type="Texture2D" uid="uid://ds53a55dqsrji" path="res://resources/pickups/bordebalde.png" id="3_sctup"]
+[ext_resource type="PackedScene" uid="uid://b6iewf7x5dru3" path="res://scenes/pickups/objeto.tscn" id="1_1aa4x"]
+[ext_resource type="Shader" path="res://scenes/pickups/borde.gdshader" id="2_33s7w"]
+[ext_resource type="Texture2D" uid="uid://byxvk7pjl8cu0" path="res://icon.svg" id="2_shfmf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wo8x5"]
-radius = 72.0625
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gftsi"]
+resource_local_to_scene = true
+shader = ExtResource("2_33s7w")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
-[node name="Area2D" type="Area2D"]
-script = ExtResource("1_enal2")
+[sub_resource type="CircleShape2D" id="CircleShape2D_wc82t"]
+radius = 72.06
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_5d7lo")
+[node name="Area2D2" instance=ExtResource("1_1aa4x")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 8)
-shape = SubResource("CircleShape2D_wo8x5")
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_gftsi")
+texture = ExtResource("2_shfmf")
 
-[node name="borde" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("3_sctup")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_wc82t")
