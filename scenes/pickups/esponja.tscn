@@ -17,6 +17,7 @@ shader_parameter/add_margins = true
 radius = 9.0
 
 [node name="Area2D" instance=ExtResource("1_7prbh")]
+tipo_arma = 3
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_dc8uv")

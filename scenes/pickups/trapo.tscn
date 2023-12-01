@@ -17,6 +17,7 @@ shader_parameter/add_margins = true
 radius = 72.06
 
 [node name="Area2D2" instance=ExtResource("1_1aa4x")]
+tipo_arma = 4
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_gftsi")

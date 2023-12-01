@@ -2,6 +2,15 @@ extends Node
 
 signal inventario_cambio
 
+
+enum armas {
+	NADA,
+	BALDE,
+	DETERGENTE,
+	ESPONJA,
+	TRAPO
+}
+
 var player_current_attack = false
 var player = null
 # 1 para balde, 2 para detergente, 3 para esponja y 4 para trapo

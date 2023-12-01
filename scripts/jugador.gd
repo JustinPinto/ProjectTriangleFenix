@@ -10,7 +10,7 @@ var aceleration = 1000
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
 var taking_damage = false
-
+var arma : Global.armas = Global.armas.NADA
 
 var health = 100:
 	set(value):
@@ -57,21 +57,16 @@ func _physics_process(delta):
 			pivot.scale.x = sign(move_input.x)
 			
 		# Animation
-		if attacking:
-			playback.travel("attack")
-			$Attack_cooldown.start()
-			Global.player_current_attack = true
-			
-		elif taking_damage == true:
-			playback.travel("daño")
-						
-		elif move_input.x != 0 or move_input.y != 0:
-			playback.travel("run")
-			
-
-		
-		else:
-			playback.travel("Idle")
+		if not attacking:
+#			playback.travel("attack")
+#			$Attack_cooldown.start()
+#			Global.player_current_attack = true
+			if taking_damage:
+				playback.travel("daño")
+			elif move_input.x != 0 or move_input.y != 0:
+				playback.travel("run")		
+			else:
+				playback.travel("Idle")
 			
 		move_and_slide()
 
@@ -118,7 +113,32 @@ func player():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
-		attacking = true 
+		if arma == Global.armas.NADA:
+			return
+			# sonido estupido
+			
+		elif arma == Global.armas.BALDE:
+			Debug.dprint("1")
+			Global.player_current_attack = true
+			attacking = true 
+			playback.travel("attack_balde")
+			$Attack_cooldown.start()
+			
+				
+		elif arma == Global.armas.DETERGENTE:
+			playback.travel("attack_detergente")
+			
+			
+			
+		elif arma == Global.armas.ESPONJA:
+			playback.travel("attack_esponja")
+			$Attack_cooldown.start()
+			
+		elif arma == Global.armas.TRAPO:
+			playback.travel("attack_trapo")
+			
+			
+
 
 func _on_attack_cooldown_timeout() -> void:
 	pass

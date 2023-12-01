@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r8te8"]
 resource_local_to_scene = true
 shader = ExtResource("2_cb3yy")
-shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/color = Color(1, 1, 0.2, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 0
 shader_parameter/inside = false
