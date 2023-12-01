@@ -85,10 +85,10 @@ metadata/_edit_group_ = true
 shape = SubResource("WorldBoundaryShape2D_vjeig")
 
 [node name="Caja objeto" parent="." instance=ExtResource("11_7347r")]
-offset_left = 266.0
-offset_top = 11.0
-offset_right = 418.0
-offset_bottom = 157.0
+offset_left = 61.0
+offset_top = 87.0
+offset_right = 213.0
+offset_bottom = 233.0
 
 [node name="cubeta" parent="." instance=ExtResource("8_nerta")]
 position = Vector2(118, 325)

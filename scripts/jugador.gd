@@ -113,26 +113,26 @@ func player():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
+		$Attack_cooldown.start()
 		if arma == Global.armas.NADA:
 			return
 			# sonido estupido
 			
 		elif arma == Global.armas.BALDE:
-			Debug.dprint("1")
 			Global.player_current_attack = true
 			attacking = true 
 			playback.travel("attack_balde")
-			$Attack_cooldown.start()
 			
 				
 		elif arma == Global.armas.DETERGENTE:
+			Global.player_current_attack = true
+			attacking = true 
 			playback.travel("attack_detergente")
 			
 			
 			
 		elif arma == Global.armas.ESPONJA:
 			playback.travel("attack_esponja")
-			$Attack_cooldown.start()
 			
 		elif arma == Global.armas.TRAPO:
 			playback.travel("attack_trapo")
