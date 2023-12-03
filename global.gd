@@ -2,7 +2,6 @@ extends Node
 
 signal inventario_cambio
 
-
 enum armas {
 	NADA,
 	BALDE,

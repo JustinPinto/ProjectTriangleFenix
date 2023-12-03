@@ -20,6 +20,7 @@ func _process(delta):
 	if player_is_near and Input.is_action_just_pressed("interact"):
 		Debug.dprint("objeto recogido")
 		jugador.arma = tipo_arma
+		
 		Debug.dprint(jugador.arma)
 		Global.inventario = self
 

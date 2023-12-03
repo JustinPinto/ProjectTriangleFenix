@@ -12,7 +12,6 @@ radius = 42.19
 
 [node name="enemigoprueba" type="CharacterBody2D"]
 script = ExtResource("1_s64nf")
-speed = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, -6)

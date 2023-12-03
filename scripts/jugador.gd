@@ -81,30 +81,10 @@ func _process(_delta):
 var duration = 1
 
 
-## ATAQUE CON BALDE
+## ATAQUE
 func _on_hitbox_awa_body_entered(body: Node2D) -> void:
-	## cuando el enemigo no tiene ningun estado encima, y lo ataca con el balde
-	## if mojado and espumado and arrugado = false and balde
+	##llama a la funcion ataque de enemigo
 	if body.has_method("enemy"):
-		body.setMojado()
-		body.take_damage()
-		
-
-## ATAQUE CON DETERGENTE
-func _on_hitbox_espuma_body_entered(body: Node2D) -> void:
-	## cuando el enemigo esta mojado, y lo ataca con el detergente
-	if body.has_method("enemy"):
-		body.setDetergente(body)
-		body.take_damage()
-
-	
-
-##ATAQUE CON ESCOBILLA
-func _on_hitbox_arruga_body_entered(body: Node2D) -> void:
-	## cuando el enemigo esta espumado, y lo ataca con la escobilla
-	## if detergente and body.espuma = trued
-	if body.has_method("enemy"):
-		body.setEscobilla(body)
 		body.take_damage()
 		
 
@@ -132,6 +112,8 @@ func _input(event: InputEvent) -> void:
 			
 			
 		elif arma == Global.armas.ESPONJA:
+			Global.player_current_attack = true
+			attacking = true 
 			playback.travel("attack_esponja")
 			
 		elif arma == Global.armas.TRAPO:
