@@ -11,13 +11,18 @@ var tiempo_mojado = 0
 var state = states.SUCIO
 @export var duracion_mojado = 3
 @export var speed = 30
+@export var charco_scene: PackedScene
+
 
 @onready var jugador = Global.player
 #var arma: Global.armas = Global.armas
 @onready var goteando: GPUParticles2D = $goteando
 @onready var movimiento_random: Timer = $MovimientoRandom
+@onready var charco_spawn: Marker2D = $CharcoSpawn
 
-var health = 400:
+
+
+var health = 50:
 	set(value):
 		health = value
 		if enemigo_vida:
@@ -31,6 +36,7 @@ var health = 400:
 
 func _ready():
 	enemigo_vida.set_health(health)
+	Global.enemy_count += 1
 	
 
 
@@ -82,6 +88,7 @@ func take_damage() -> void:
 		pass
 		
 	if health <= 0:
+		Global.enemy_count -= 1
 		Debug.dprint("muerto x.x")	
 		queue_free()
 
@@ -101,6 +108,12 @@ func setMojado() -> void:
 		Debug.dprint("mojado")
 		goteando.emitting = true
 		tiempo_mojado = 0
+		if not charco_scene:
+			return
+		await get_tree().create_timer(3.0, false).timeout
+		var charco = charco_scene.instantiate()
+		get_parent().add_child(charco)
+		charco.global_position = charco_spawn.global_position
 
 #Cuando ataca con un detergente
 func setDetergente() -> void:

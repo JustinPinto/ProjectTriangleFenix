@@ -19,5 +19,7 @@ var inventario = null:
 		inventario = value
 		inventario_cambio.emit()		
 
+var enemy_count = 0
+var max_enemys = 4
 
 

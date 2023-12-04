@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://doram5416i8ln"]
+[gd_scene load_steps=48 format=3 uid="uid://doram5416i8ln"]
 
 [ext_resource type="Script" path="res://scripts/jugador.gd" id="1_08ii7"]
 [ext_resource type="PackedScene" uid="uid://cp4534vc2hj3u" path="res://scenes/pawarticulas.tscn" id="2_7dlfj"]
@@ -839,11 +839,16 @@ height = 70.4348
 radius = 17.8261
 height = 78.2609
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dsjpn"]
+radius = 11.0006
+height = 116.0
+
 [node name="Jugador" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_08ii7")
 agua_gpu_scene = ExtResource("2_7dlfj")
 attacking = true
+duracion_resbale = 0.4
 
 [node name="pivot" type="Node2D" parent="."]
 
@@ -899,6 +904,13 @@ process_mode = 3
 
 [node name="mona_vida" parent="CanvasLayer" instance=ExtResource("7_v5yhv")]
 scale = Vector2(1.5, 1.5)
+
+[node name="hitboxPies" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitboxPies"]
+position = Vector2(-13, 92)
+rotation = -1.57058
+shape = SubResource("CapsuleShape2D_dsjpn")
 
 [connection signal="body_entered" from="pivot/HitboxAwa" to="." method="_on_hitbox_awa_body_entered"]
 [connection signal="timeout" from="Attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://brom1eiwb2ad5"]
+
+[ext_resource type="Script" path="res://scripts/SpawnerEnemigo.gd" id="1_2nf42"]
+[ext_resource type="PackedScene" uid="uid://bclo58dxhbypu" path="res://scenes/enemigoprueba.tscn" id="2_8uq8t"]
+
+[node name="SpawnerEnemigo" type="Node2D"]
+script = ExtResource("1_2nf42")
+enemigo_scene = ExtResource("2_8uq8t")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Markers"]
+position = Vector2(-70, -1)
+
+[node name="Marker2D2" type="Marker2D" parent="Markers"]
+position = Vector2(-1, 119)
+
+[node name="Marker2D3" type="Marker2D" parent="Markers"]
+position = Vector2(1, -69)
+
+[node name="Marker2D4" type="Marker2D" parent="Markers"]
+position = Vector2(250, -2)

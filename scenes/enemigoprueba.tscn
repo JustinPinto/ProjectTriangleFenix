@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bclo58dxhbypu"]
+[gd_scene load_steps=8 format=3 uid="uid://bclo58dxhbypu"]
 
 [ext_resource type="Script" path="res://scripts/enemigoprueba.gd" id="1_s64nf"]
 [ext_resource type="PackedScene" uid="uid://2pxxmkgra5dc" path="res://scenes/goteando.tscn" id="2_n3yxl"]
 [ext_resource type="Texture2D" uid="uid://vxkpla051rtb" path="res://resources/enemigo.png" id="2_yc5fi"]
 [ext_resource type="PackedScene" uid="uid://ccuc514f4qega" path="res://scenes/enemigo_vida.tscn" id="3_v2jua"]
+[ext_resource type="PackedScene" uid="uid://cpkvh76ubusn" path="res://scenes/charco.tscn" id="5_cfg6k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_busdl"]
 radius = 34.5579
@@ -13,6 +14,7 @@ radius = 42.19
 
 [node name="enemigoprueba" type="CharacterBody2D"]
 script = ExtResource("1_s64nf")
+charco_scene = ExtResource("5_cfg6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, -6)
@@ -43,5 +45,8 @@ autostart = true
 [node name="goteando" parent="." instance=ExtResource("2_n3yxl")]
 position = Vector2(0, -67)
 amount = 10
+
+[node name="CharcoSpawn" type="Marker2D" parent="."]
+position = Vector2(0, 56)
 
 [connection signal="timeout" from="MovimientoRandom" to="." method="_on_timer_timeout"]

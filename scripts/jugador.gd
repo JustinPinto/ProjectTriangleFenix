@@ -13,13 +13,13 @@ extends CharacterBody2D
 @onready var health_bar = $CanvasLayer/mona_vida
 
 var resbalo = false
+var tiempo_resbale = 0
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
 var taking_damage = false
 var arma : Global.armas = Global.armas.NADA
 var player_alive = true
 var aceleration = 1000
-var tiempo_resbale = 0
 var health = 100:
 	set(value):
 		health = value
@@ -43,12 +43,13 @@ func _physics_process(delta):
 		var move_input = Input.get_vector("left", "right", "up", "down")
 		if resbalo:
 			tiempo_resbale += delta
-			if tiempo_resbale >= duracion_resbale:
+			if tiempo_resbale > duracion_resbale:
+				tiempo_resbale = 0
 				resbalo = false
 				
-		if resbalo:
 			var direccion = velocity.normalized()
 			velocity = direccion*multiplicadorResbalado*speed
+			#Debug.dprint(velocity)
 				
 		elif not attacking:
 			velocity.x = move_toward(velocity.x,speed*move_input.x,aceleration)
@@ -90,7 +91,7 @@ func tirar_agua():
 func _process(_delta):
 	pass
 
-var duration = 1
+#var duration = 1
 
 
 ## ATAQUE
@@ -106,7 +107,7 @@ func player():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		if resbalo:
-			return
+			playback.travel("daño")
 			
 		$Attack_cooldown.start()
 		if arma == Global.armas.NADA:
