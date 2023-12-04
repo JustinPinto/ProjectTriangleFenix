@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://2pxxmkgra5dc"]
+
+[ext_resource type="Texture2D" uid="uid://bkrgyh7iclyae" path="res://scenes/lanzar_awa/awa.png" id="1_mnsoy"]
+[ext_resource type="Script" path="res://scripts/goteando.gd" id="2_kw0ky"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ks3j"]
+emission_shape = 3
+emission_box_extents = Vector3(30, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 98, 0)
+initial_velocity_max = 31.58
+angular_velocity_min = -121.26
+angular_velocity_max = 60.63
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 0.9
+
+[node name="goteando" type="GPUParticles2D"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_6ks3j")
+texture = ExtResource("1_mnsoy")
+script = ExtResource("2_kw0ky")

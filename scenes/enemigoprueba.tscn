@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bclo58dxhbypu"]
+[gd_scene load_steps=7 format=3 uid="uid://bclo58dxhbypu"]
 
 [ext_resource type="Script" path="res://scripts/enemigoprueba.gd" id="1_s64nf"]
+[ext_resource type="PackedScene" uid="uid://2pxxmkgra5dc" path="res://scenes/goteando.tscn" id="2_n3yxl"]
 [ext_resource type="Texture2D" uid="uid://vxkpla051rtb" path="res://resources/enemigo.png" id="2_yc5fi"]
 [ext_resource type="PackedScene" uid="uid://ccuc514f4qega" path="res://scenes/enemigo_vida.tscn" id="3_v2jua"]
 
@@ -36,7 +37,11 @@ offset_top = 22.0
 offset_right = 118.0
 offset_bottom = 66.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="MovimientoRandom" type="Timer" parent="."]
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="goteando" parent="." instance=ExtResource("2_n3yxl")]
+position = Vector2(0, -67)
+amount = 10
+
+[connection signal="timeout" from="MovimientoRandom" to="." method="_on_timer_timeout"]

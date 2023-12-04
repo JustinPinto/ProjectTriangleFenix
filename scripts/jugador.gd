@@ -1,17 +1,25 @@
 extends CharacterBody2D
 @export var speed = 500
-var aceleration = 1000
+@export var agua_gpu_scene : PackedScene
+@export var attacking = false 
+@export var multiplicadorResbalado = 1.4 
+@export var duracion_resbale = 0.3
+
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot: Node2D = $pivot
 @onready var health_bar = $CanvasLayer/mona_vida
 
+var resbalo = false
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
 var taking_damage = false
 var arma : Global.armas = Global.armas.NADA
-
+var player_alive = true
+var aceleration = 1000
+var tiempo_resbale = 0
 var health = 100:
 	set(value):
 		health = value
@@ -22,10 +30,6 @@ var health = 100:
 @onready var agua_spawn: Marker2D = $pivot/AguaSpawn
 @onready var attack_cooldown: Timer = $Attack_cooldown
 
-@export var agua_gpu_scene : PackedScene
-
-var player_alive = true
-@export var attacking = false 
 
 
 func _ready() -> void:
@@ -35,10 +39,18 @@ func _ready() -> void:
 	Global.player = self
 	
 func _physics_process(delta):
-	#var move_input = Input.get_axis("left","right")
 	if player_alive:
 		var move_input = Input.get_vector("left", "right", "up", "down")
-		if not attacking:
+		if resbalo:
+			tiempo_resbale += delta
+			if tiempo_resbale >= duracion_resbale:
+				resbalo = false
+				
+		if resbalo:
+			var direccion = velocity.normalized()
+			velocity = direccion*multiplicadorResbalado*speed
+				
+		elif not attacking:
 			velocity.x = move_toward(velocity.x,speed*move_input.x,aceleration)
 			velocity.y = move_toward(velocity.y,speed*move_input.y,aceleration)
 		else:	
@@ -93,6 +105,9 @@ func player():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
+		if resbalo:
+			return
+			
 		$Attack_cooldown.start()
 		if arma == Global.armas.NADA:
 			return
@@ -148,3 +163,8 @@ func enemy_attack():
 		
 func _on_enemy_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
+	
+func resbalar():
+	resbalo = true
+	#ver cambio de sprite
+	#

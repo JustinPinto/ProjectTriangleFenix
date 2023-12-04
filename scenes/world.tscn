@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cc8sof2x818gq"]
+[gd_scene load_steps=17 format=3 uid="uid://cc8sof2x818gq"]
 
 [ext_resource type="Texture2D" uid="uid://bqvjosdxv4jso" path="res://resources/fondo4.png" id="1_eaaqn"]
 [ext_resource type="PackedScene" uid="uid://doram5416i8ln" path="res://scenes/jugador.tscn" id="3_aajl1"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://0b101lhue11t" path="res://scenes/pickups/detergente.tscn" id="9_gcrkk"]
 [ext_resource type="PackedScene" uid="uid://ctqahk8cohu4w" path="res://scenes/pickups/trapo.tscn" id="10_15gnr"]
 [ext_resource type="PackedScene" uid="uid://b3mhm1bv5yh6d" path="res://scenes/caja_objeto.tscn" id="11_7347r"]
+[ext_resource type="PackedScene" uid="uid://cpkvh76ubusn" path="res://scenes/charco.tscn" id="11_m78re"]
 
 [sub_resource type="GDScript" id="GDScript_gs7e6"]
 script/source = "extends Objeto
@@ -104,3 +105,6 @@ position = Vector2(357, 341)
 [node name="detergente" parent="." instance=ExtResource("9_gcrkk")]
 position = Vector2(116, 476)
 scale = Vector2(2, 2)
+
+[node name="Charco" parent="." instance=ExtResource("11_m78re")]
+position = Vector2(616, 588)

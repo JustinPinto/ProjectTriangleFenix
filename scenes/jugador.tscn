@@ -851,7 +851,6 @@ attacking = true
 position = Vector2(-5, 9.53674e-07)
 scale = Vector2(2, 2.032)
 texture = ExtResource("3_xqg34")
-frame = 1
 
 [node name="AguaSpawn" type="Marker2D" parent="pivot"]
 position = Vector2(59, 0)
