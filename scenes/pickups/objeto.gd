@@ -3,6 +3,8 @@ extends Node2D
 
 @onready var jugador = Global.player
 @onready var sprite_2d = $Sprite2D
+@onready var animation_player = $AnimationPlayer
+@onready var sprite_quieto = $spriteQuieto
 
 
 
@@ -16,13 +18,17 @@ func get_texture():
 	return sprite_2d.texture
 		
 
+
+func _ready():
+	pass
+	
 func _process(delta):
 	if player_is_near and Input.is_action_just_pressed("interact"):
 		Debug.dprint("objeto recogido")
 		jugador.arma = tipo_arma
 		
 		Debug.dprint(jugador.arma)
-		Global.inventario = self
+		Global.inventario = self.sprite_quieto
 
 func _on_body_entered(body):
 	if body.has_method("player"):

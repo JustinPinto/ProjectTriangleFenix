@@ -1,5 +1,6 @@
 extends MarginContainer
-@onready var health_bar = $VBoxContainer/HBoxContainer/HealthBar
+@onready var health_bar = $VBoxContainer/HBoxContainer/TextureProgressBar
+
 
 
 func set_health(value):

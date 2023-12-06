@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://be8ir8c5ug45c"]
+[gd_scene load_steps=6 format=3 uid="uid://be8ir8c5ug45c"]
 
 [ext_resource type="PackedScene" uid="uid://b6iewf7x5dru3" path="res://scenes/pickups/objeto.tscn" id="1_85vwk"]
 [ext_resource type="Shader" path="res://scenes/pickups/borde.gdshader" id="2_45uof"]
-[ext_resource type="Texture2D" uid="uid://6vjba1tigchg" path="res://resources/balde_sentado.png" id="3_6oynp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bkabh"]
 resource_local_to_scene = true
@@ -13,10 +12,20 @@ shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4kor8"]
+load_path = "res://.godot/imported/balde_sentado.png-e9e2e2bd800db6e12e51297900592435.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_erj8w"]
+load_path = "res://.godot/imported/balde_sentado.png-e9e2e2bd800db6e12e51297900592435.ctex"
+
 [node name="Area2D" instance=ExtResource("1_85vwk")]
 tipo_arma = 1
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_bkabh")
 position = Vector2(-2, 9)
-texture = ExtResource("3_6oynp")
+texture = SubResource("CompressedTexture2D_4kor8")
+
+[node name="spriteQuieto" parent="." index="4"]
+visible = false
+texture = SubResource("CompressedTexture2D_erj8w")

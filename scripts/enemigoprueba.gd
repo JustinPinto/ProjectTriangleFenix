@@ -1,5 +1,5 @@
 extends CharacterBody2D
-enum states{SUCIO, MOJADO, ESPUMADO, ESCOBILLADO, SECADO}
+enum states{SUCIO, MOJADO, ESPUMADO, ESCOBILLADO}
 
 #var mojado = false
 #var espumado = false
@@ -9,7 +9,12 @@ var oldModulate = self.modulate
 var arma : Global.armas = Global.armas.NADA
 var tiempo_mojado = 0
 var state = states.SUCIO
-@export var duracion_mojado = 3
+@onready var animation_player = $AnimationPlayer
+@onready var animation_tree = $AnimationTree
+@onready var playback = animation_tree.get("parameters/playback")
+
+
+@export var duracion_mojado = 5
 @export var speed = 30
 @export var charco_scene: PackedScene
 
@@ -22,7 +27,7 @@ var state = states.SUCIO
 
 
 
-var health = 50:
+var health = 200:
 	set(value):
 		health = value
 		if enemigo_vida:
@@ -35,14 +40,14 @@ var health = 50:
 
 
 func _ready():
+	animation_tree.active = true
 	enemigo_vida.set_health(health)
 	Global.enemy_count += 1
 	
 
 
 func _process(delta):
-	
-	
+
 	if state == states.MOJADO:
 		tiempo_mojado += delta
 		if tiempo_mojado >= duracion_mojado:
@@ -52,6 +57,8 @@ func _process(delta):
 		goteando.emitting = false
 
 func take_damage() -> void:
+	playback.travel("Idle")
+	
 	if jugador.arma == Global.armas.NADA:
 		pass
 		# sonido estupido

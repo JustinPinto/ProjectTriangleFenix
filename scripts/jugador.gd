@@ -54,6 +54,11 @@ func _physics_process(delta):
 		elif not attacking:
 			velocity.x = move_toward(velocity.x,speed*move_input.x,aceleration)
 			velocity.y = move_toward(velocity.y,speed*move_input.y,aceleration)
+			
+		elif attacking && arma == Global.armas.DETERGENTE:
+			velocity.x = move_toward(velocity.x,speed*move_input.x* 0,aceleration)
+			velocity.y = move_toward(velocity.y,speed*move_input.y* 0,aceleration)
+			
 		else:	
 			velocity.x = move_toward(velocity.x,speed*move_input.x* 0.4,aceleration)
 			velocity.y = move_toward(velocity.y,speed*move_input.y* 0.4,aceleration)

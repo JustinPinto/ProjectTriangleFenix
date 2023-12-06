@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccuc514f4qega"]
+[gd_scene load_steps=3 format=3 uid="uid://ccuc514f4qega"]
 
 [ext_resource type="Script" path="res://scripts/EnemigoVida.gd" id="1_qsoii"]
+[ext_resource type="Texture2D" uid="uid://cxa87dy7uddom" path="res://resources/Hearths/health_bar/health_bar.png" id="2_fgfpm"]
 
 [node name="EnemigoVida" type="MarginContainer"]
 anchors_preset = 15
@@ -21,8 +22,7 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="HealthBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-step = 1.0
-show_percentage = false
+max_value = 200.0
+texture_progress = ExtResource("2_fgfpm")

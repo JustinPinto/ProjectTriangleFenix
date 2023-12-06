@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cg87mnykbhcd0"]
+[gd_scene load_steps=8 format=3 uid="uid://cg87mnykbhcd0"]
 
 [ext_resource type="PackedScene" uid="uid://b6iewf7x5dru3" path="res://scenes/pickups/objeto.tscn" id="1_7prbh"]
-[ext_resource type="Texture2D" uid="uid://chi03cjdjll51" path="res://resources/pickups/escobilla.png" id="2_r822r"]
 [ext_resource type="Shader" path="res://scenes/pickups/borde.gdshader" id="2_xenp4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dc8uv"]
@@ -13,17 +12,31 @@ shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hyibq"]
+load_path = "res://.godot/imported/escobilla.png-f6c87fb9400965952f27db5b76195e8a.ctex"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_x5l6v"]
 radius = 9.0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6kvmo"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2rp51"]
+load_path = "res://.godot/imported/escobilla.png-f6c87fb9400965952f27db5b76195e8a.ctex"
 
 [node name="Area2D" instance=ExtResource("1_7prbh")]
 tipo_arma = 3
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_dc8uv")
-position = Vector2(2, -27)
-texture = ExtResource("2_r822r")
+texture = SubResource("CompressedTexture2D_hyibq")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_x5l6v")
+
+[node name="AnimationTree" parent="." index="3"]
+tree_root = SubResource("AnimationNodeStateMachine_6kvmo")
+
+[node name="spriteQuieto" parent="." index="4"]
+visible = false
+texture = SubResource("CompressedTexture2D_2rp51")
