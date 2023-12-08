@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://doram5416i8ln"]
+[gd_scene load_steps=61 format=3 uid="uid://doram5416i8ln"]
 
 [ext_resource type="Script" path="res://scripts/jugador.gd" id="1_08ii7"]
 [ext_resource type="PackedScene" uid="uid://cp4534vc2hj3u" path="res://scenes/pawarticulas.tscn" id="2_7dlfj"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b411ilha5n6yc" path="res://scenes/menu_pausa.tscn" id="6_643qp"]
 [ext_resource type="Texture2D" uid="uid://c4yq4t7lon8ar" path="res://resources/disparo_sombras.png" id="6_xdhh5"]
 [ext_resource type="PackedScene" uid="uid://b3mep4p1tfwl7" path="res://scenes/mona_vida.tscn" id="7_v5yhv"]
+[ext_resource type="Texture2D" uid="uid://4484423qbi6k" path="res://resources/resbalo2.png" id="9_knm53"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c771w"]
 radius = 17.9419
@@ -129,6 +130,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-6, 3)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:resbalo")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_srq3g"]
@@ -731,6 +744,70 @@ tracks/3/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_ud04r"]
+resource_name = "resbalo"
+length = 0.32
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_knm53")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:resbalo")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.32),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8e46w"]
 _data = {
 "Idle": SubResource("Animation_v4hkc"),
@@ -741,6 +818,7 @@ _data = {
 "attack_nada": SubResource("Animation_mhg3l"),
 "attack_trapo": SubResource("Animation_se2f3"),
 "daño": SubResource("Animation_j068x"),
+"resbalo": SubResource("Animation_ud04r"),
 "run": SubResource("Animation_wb6dm")
 }
 
@@ -764,6 +842,9 @@ animation = &"attack_trapo"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_83o15"]
 animation = &"daño"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8284b"]
+animation = &"resbalo"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4s8jg"]
 animation = &"run"
@@ -813,27 +894,47 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4v5wo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rt8sl"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4wms0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ykt2p"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6llho"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_visno"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b2y8p"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bhtkj"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uurf3"]
 states/End/position = Vector2(1198.67, 69.7351)
 states/Idle/node = SubResource("AnimationNodeAnimation_50cha")
 states/Idle/position = Vector2(364, 58.4445)
 states/Start/position = Vector2(144, 58.6667)
 states/attack_balde/node = SubResource("AnimationNodeAnimation_xfkcn")
-states/attack_balde/position = Vector2(419.753, -138.33)
+states/attack_balde/position = Vector2(517.086, -251.663)
 states/attack_detergente/node = SubResource("AnimationNodeAnimation_oivma")
-states/attack_detergente/position = Vector2(180.527, -114.406)
+states/attack_detergente/position = Vector2(187.194, -243.375)
 states/attack_esponja/node = SubResource("AnimationNodeAnimation_2sq0q")
-states/attack_esponja/position = Vector2(873.516, 246.327)
+states/attack_esponja/position = Vector2(884.183, -251.438)
 states/attack_nada/node = SubResource("AnimationNodeAnimation_i728s")
-states/attack_nada/position = Vector2(721.09, -127.085)
+states/attack_nada/position = Vector2(693.09, -254.223)
 states/attack_trapo/node = SubResource("AnimationNodeAnimation_4ufxv")
-states/attack_trapo/position = Vector2(1059.75, 2.42101)
+states/attack_trapo/position = Vector2(1121.08, -256.733)
 "states/daño/node" = SubResource("AnimationNodeAnimation_83o15")
-"states/daño/position" = Vector2(362.646, 261.719)
+"states/daño/position" = Vector2(91.9793, 308.386)
+states/resbalo/node = SubResource("AnimationNodeAnimation_8284b")
+states/resbalo/position = Vector2(883.294, 97.7407)
 states/run/node = SubResource("AnimationNodeAnimation_4s8jg")
-states/run/position = Vector2(181, 261.755)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fsvce"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_ybwxa"), "run", "Idle", SubResource("AnimationNodeStateMachineTransition_6ecgr"), "Idle", "daño", SubResource("AnimationNodeStateMachineTransition_cal2g"), "run", "daño", SubResource("AnimationNodeStateMachineTransition_4vm4d"), "daño", "Idle", SubResource("AnimationNodeStateMachineTransition_gqhxl"), "attack_trapo", "Idle", SubResource("AnimationNodeStateMachineTransition_nejxp"), "attack_balde", "Idle", SubResource("AnimationNodeStateMachineTransition_jnki6"), "attack_nada", "Idle", SubResource("AnimationNodeStateMachineTransition_lk4jk"), "Idle", "attack_balde", SubResource("AnimationNodeStateMachineTransition_21sy2"), "Idle", "attack_nada", SubResource("AnimationNodeStateMachineTransition_g5pvl"), "Idle", "attack_trapo", SubResource("AnimationNodeStateMachineTransition_tjvdb"), "Idle", "attack_detergente", SubResource("AnimationNodeStateMachineTransition_jk0j8"), "attack_detergente", "Idle", SubResource("AnimationNodeStateMachineTransition_8mwxb"), "Idle", "attack_esponja", SubResource("AnimationNodeStateMachineTransition_614ia"), "attack_esponja", "Idle", SubResource("AnimationNodeStateMachineTransition_fu733")]
-graph_offset = Vector2(49.5156, 21.6602)
+states/run/position = Vector2(553, 332.422)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fsvce"), "Idle", "run", SubResource("AnimationNodeStateMachineTransition_ybwxa"), "run", "Idle", SubResource("AnimationNodeStateMachineTransition_6ecgr"), "Idle", "daño", SubResource("AnimationNodeStateMachineTransition_cal2g"), "run", "daño", SubResource("AnimationNodeStateMachineTransition_4vm4d"), "daño", "Idle", SubResource("AnimationNodeStateMachineTransition_gqhxl"), "attack_trapo", "Idle", SubResource("AnimationNodeStateMachineTransition_nejxp"), "attack_balde", "Idle", SubResource("AnimationNodeStateMachineTransition_jnki6"), "attack_nada", "Idle", SubResource("AnimationNodeStateMachineTransition_lk4jk"), "Idle", "attack_balde", SubResource("AnimationNodeStateMachineTransition_21sy2"), "Idle", "attack_nada", SubResource("AnimationNodeStateMachineTransition_g5pvl"), "Idle", "attack_trapo", SubResource("AnimationNodeStateMachineTransition_tjvdb"), "Idle", "attack_detergente", SubResource("AnimationNodeStateMachineTransition_jk0j8"), "attack_detergente", "Idle", SubResource("AnimationNodeStateMachineTransition_8mwxb"), "Idle", "attack_esponja", SubResource("AnimationNodeStateMachineTransition_614ia"), "attack_esponja", "Idle", SubResource("AnimationNodeStateMachineTransition_fu733"), "Idle", "resbalo", SubResource("AnimationNodeStateMachineTransition_4v5wo"), "resbalo", "Idle", SubResource("AnimationNodeStateMachineTransition_rt8sl"), "run", "resbalo", SubResource("AnimationNodeStateMachineTransition_4wms0"), "attack_detergente", "resbalo", SubResource("AnimationNodeStateMachineTransition_ykt2p"), "attack_balde", "resbalo", SubResource("AnimationNodeStateMachineTransition_6llho"), "attack_nada", "resbalo", SubResource("AnimationNodeStateMachineTransition_visno"), "attack_esponja", "resbalo", SubResource("AnimationNodeStateMachineTransition_b2y8p"), "attack_trapo", "resbalo", SubResource("AnimationNodeStateMachineTransition_bhtkj")]
+graph_offset = Vector2(100.561, -267.223)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w2fme"]
 radius = 16.087
@@ -852,7 +953,7 @@ collision_layer = 4
 script = ExtResource("1_08ii7")
 agua_gpu_scene = ExtResource("2_7dlfj")
 attacking = true
-duracion_resbale = 0.4
+resbalo = true
 
 [node name="pivot" type="Node2D" parent="."]
 
@@ -860,6 +961,7 @@ duracion_resbale = 0.4
 position = Vector2(-6, 3)
 scale = Vector2(2, 2.032)
 texture = ExtResource("3_xqg34")
+frame = 1
 
 [node name="AguaSpawn" type="Marker2D" parent="pivot"]
 position = Vector2(59, 0)
@@ -871,7 +973,6 @@ position = Vector2(166, 1)
 rotation = 1.58798
 scale = Vector2(3.75812, 11.0945)
 shape = SubResource("CapsuleShape2D_c771w")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

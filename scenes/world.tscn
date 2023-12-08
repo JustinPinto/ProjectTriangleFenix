@@ -41,7 +41,7 @@ metadata/_edit_lock_ = true
 
 [node name="Jugador" parent="." instance=ExtResource("3_aajl1")]
 z_index = 1
-position = Vector2(1004, 450)
+position = Vector2(267, 497)
 scale = Vector2(0.75, 0.75)
 collision_layer = 5
 
@@ -94,11 +94,11 @@ offset_right = 213.0
 offset_bottom = 233.0
 
 [node name="cubeta" parent="." instance=ExtResource("8_nerta")]
-position = Vector2(213, 588)
+position = Vector2(238, 646)
 scale = Vector2(2, 2)
 
 [node name="esponja" parent="." instance=ExtResource("9_8m7hn")]
-position = Vector2(236, 499)
+position = Vector2(82, 556)
 scale = Vector2(3, 3)
 
 [node name="trapo" parent="." instance=ExtResource("10_15gnr")]

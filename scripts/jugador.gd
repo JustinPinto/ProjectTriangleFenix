@@ -2,8 +2,8 @@ extends CharacterBody2D
 @export var speed = 500
 @export var agua_gpu_scene : PackedScene
 @export var attacking = false 
-@export var multiplicadorResbalado = 1.4 
-@export var duracion_resbale = 0.3
+@export var multiplicadorResbalado = 2
+@export var duracion_resbale = 0.7
 
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -12,7 +12,7 @@ extends CharacterBody2D
 @onready var pivot: Node2D = $pivot
 @onready var health_bar = $CanvasLayer/mona_vida
 
-var resbalo = false
+@export var resbalo = false
 var tiempo_resbale = 0
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
@@ -35,6 +35,7 @@ var health = 100:
 func _ready() -> void:
 	animation_tree.active = true
 	attacking = false
+	resbalo = false
 	health_bar.set_health(health)
 	Global.player = self
 	
@@ -75,12 +76,20 @@ func _physics_process(delta):
 			pivot.scale.x = sign(move_input.x)
 			
 		# Animation
+		
+
+		
 		if not attacking:
 #			playback.travel("attack")
 #			$Attack_cooldown.start()
 #			Global.player_current_attack = true
-			if taking_damage:
+			if resbalo:
+				playback.travel("resbalo")
+			
+			elif taking_damage:
 				playback.travel("daño")
+
+				
 			elif move_input.x != 0 or move_input.y != 0:
 				playback.travel("run")		
 			else:
@@ -112,7 +121,7 @@ func player():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		if resbalo:
-			playback.travel("daño")
+			playback.travel("resbalo")
 			
 		$Attack_cooldown.start()
 		if arma == Global.armas.NADA:
@@ -172,5 +181,6 @@ func _on_enemy_attack_cooldown_timeout():
 	
 func resbalar():
 	resbalo = true
+	
 	#ver cambio de sprite
 	#
