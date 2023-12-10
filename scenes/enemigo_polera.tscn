@@ -17,7 +17,7 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rkodx"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5xv2h"]
 states/End/position = Vector2(1032, 98.6667)
 "states/daño/node" = SubResource("AnimationNodeAnimation_fc780")
 "states/daño/position" = Vector2(766.667, 98.4444)
@@ -28,4 +28,4 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 [node name="enemigoPolera" instance=ExtResource("1_evxg1")]
 
 [node name="AnimationTree" parent="." index="8"]
-tree_root = SubResource("AnimationNodeStateMachine_rkodx")
+tree_root = SubResource("AnimationNodeStateMachine_5xv2h")

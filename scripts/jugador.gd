@@ -130,7 +130,9 @@ func _input(event: InputEvent) -> void:
 			
 		$Attack_cooldown.start()
 		if arma == Global.armas.NADA:
-			return
+			Global.player_current_attack = true
+			attacking = true 
+			playback.travel("attack_nada")
 			# sonido estupido
 			
 		elif arma == Global.armas.BALDE:
