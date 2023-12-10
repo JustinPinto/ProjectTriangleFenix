@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpkvh76ubusn"]
+[gd_scene load_steps=11 format=3 uid="uid://cpkvh76ubusn"]
 
 [ext_resource type="Script" path="res://scripts/charco.gd" id="1_e6wvq"]
 [ext_resource type="Texture2D" uid="uid://ctpcd3m2ycqhe" path="res://resources/charquitos3-sheet.png" id="2_gecvi"]
@@ -6,17 +6,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ohws6"]
 radius = 10.9998
 height = 77.9987
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tfupj"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ewn2o"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6a5dl"]
-states/idle/node = SubResource("AnimationNodeAnimation_tfupj")
-states/idle/position = Vector2(621.333, 79.3333)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ewn2o")]
 
 [sub_resource type="Animation" id="Animation_dfxcm"]
 length = 0.001
@@ -128,6 +117,20 @@ _data = {
 "idle": SubResource("Animation_tavxo")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tfupj"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ewn2o"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6a5dl"]
+states/idle/node = SubResource("AnimationNodeAnimation_tfupj")
+states/idle/position = Vector2(621.333, 79.3333)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ewn2o")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y47go"]
+size = Vector2(131.5, 61)
+
 [node name="Charco" type="Area2D"]
 collision_mask = 4
 script = ExtResource("1_e6wvq")
@@ -144,6 +147,9 @@ rotation = -1.565
 shape = SubResource("CapsuleShape2D_ohws6")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iaddy")
+}
 tree_root = SubResource("AnimationNodeStateMachine_6a5dl")
 anim_player = NodePath("../AnimationPlayer")
 
@@ -152,4 +158,14 @@ libraries = {
 "": SubResource("AnimationLibrary_iaddy")
 }
 
+[node name="Clean" type="Area2D" parent="."]
+
+[node name="CleanCollisionShape2D" type="CollisionShape2D" parent="Clean"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_y47go")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="Clean" to="." method="_on_clean_body_entered"]
+[connection signal="body_exited" from="Clean" to="." method="_on_clean_body_exited"]
+[connection signal="child_entered_tree" from="Clean/CleanCollisionShape2D" to="." method="_on_clean_collision_shape_2d_child_entered_tree"]
