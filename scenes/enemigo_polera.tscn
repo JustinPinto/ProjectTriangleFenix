@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://y13lkpmr2b4q"]
+[gd_scene load_steps=9 format=3 uid="uid://y13lkpmr2b4q"]
 
 [ext_resource type="PackedScene" uid="uid://bclo58dxhbypu" path="res://scenes/enemigoprueba.tscn" id="1_evxg1"]
+[ext_resource type="Texture2D" uid="uid://xttkr0t1yml8" path="res://resources/sacudida.png" id="2_7qmkx"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fc780"]
 animation = &"daño"
@@ -26,6 +27,11 @@ states/idle/position = Vector2(456, 99.3333)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ucnkk"), "idle", "daño", SubResource("AnimationNodeStateMachineTransition_la7hs"), "daño", "idle", SubResource("AnimationNodeStateMachineTransition_h1lku")]
 
 [node name="enemigoPolera" instance=ExtResource("1_evxg1")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_7qmkx")
+hframes = 2
+frame = 1
 
 [node name="AnimationTree" parent="." index="8"]
 tree_root = SubResource("AnimationNodeStateMachine_5xv2h")

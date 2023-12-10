@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cc8sof2x818gq"]
+[gd_scene load_steps=18 format=3 uid="uid://cc8sof2x818gq"]
 
 [ext_resource type="Texture2D" uid="uid://bqvjosdxv4jso" path="res://resources/fondo4.png" id="1_eaaqn"]
+[ext_resource type="PackedScene" uid="uid://bclo58dxhbypu" path="res://scenes/enemigoprueba.tscn" id="3_134p3"]
 [ext_resource type="PackedScene" uid="uid://doram5416i8ln" path="res://scenes/jugador.tscn" id="3_aajl1"]
 [ext_resource type="PackedScene" uid="uid://cxi2tt17evmfs" path="res://scenes/window.tscn" id="5_bo4hd"]
-[ext_resource type="PackedScene" uid="uid://y13lkpmr2b4q" path="res://scenes/enemigo_polera.tscn" id="5_gyy6i"]
-[ext_resource type="PackedScene" uid="uid://c5tx486wlxh8d" path="res://scenes/enemigo_pantalon.tscn" id="6_4d5cc"]
 [ext_resource type="Script" path="res://scripts/Window.gd" id="6_bhn8n"]
 [ext_resource type="PackedScene" uid="uid://be8ir8c5ug45c" path="res://scenes/pickups/cubeta.tscn" id="8_nerta"]
 [ext_resource type="PackedScene" uid="uid://cg87mnykbhcd0" path="res://scenes/pickups/esponja.tscn" id="9_8m7hn"]
@@ -41,20 +40,17 @@ flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="Jugador" parent="." instance=ExtResource("3_aajl1")]
-z_index = 1
+z_index = 2
 position = Vector2(267, 497)
 scale = Vector2(0.75, 0.75)
 collision_layer = 5
 
+[node name="enemigoprueba" parent="." instance=ExtResource("3_134p3")]
+position = Vector2(1010, 424)
+
 [node name="Window" parent="." instance=ExtResource("5_bo4hd")]
 visible = false
 script = ExtResource("6_bhn8n")
-
-[node name="enemigoPolera" parent="." instance=ExtResource("5_gyy6i")]
-position = Vector2(923, 492)
-
-[node name="enemigoPantalon" parent="." instance=ExtResource("6_4d5cc")]
-position = Vector2(966, 352)
 
 [node name="izquierda" type="StaticBody2D" parent="."]
 position = Vector2(16, 334)

@@ -1,11 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://bclo58dxhbypu"]
+[gd_scene load_steps=24 format=3 uid="uid://bclo58dxhbypu"]
 
 [ext_resource type="Script" path="res://scripts/enemigoprueba.gd" id="1_s64nf"]
 [ext_resource type="PackedScene" uid="uid://2pxxmkgra5dc" path="res://scenes/goteando.tscn" id="2_n3yxl"]
 [ext_resource type="Texture2D" uid="uid://ix8x15wdnh5d" path="res://resources/polera idle.png" id="3_4gigb"]
+[ext_resource type="PackedScene" uid="uid://dgsc2gh621mcf" path="res://scenes/espumando.tscn" id="3_hvmcx"]
 [ext_resource type="PackedScene" uid="uid://ccuc514f4qega" path="res://scenes/enemigo_vida.tscn" id="3_v2jua"]
 [ext_resource type="PackedScene" uid="uid://cpkvh76ubusn" path="res://scenes/charco.tscn" id="5_cfg6k"]
-[ext_resource type="Texture2D" uid="uid://cgpbg5xddjal7" path="res://resources/pantalonmalov2.png" id="6_r75jr"]
 [ext_resource type="Texture2D" uid="uid://j2qvi5vvavyi" path="res://resources/golpe_polera.png" id="6_uknti"]
 [ext_resource type="Texture2D" uid="uid://xttkr0t1yml8" path="res://resources/sacudida.png" id="8_xoo2m"]
 
@@ -14,69 +14,6 @@ radius = 34.5579
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s4pxu"]
 radius = 42.19
-
-[sub_resource type="Animation" id="Animation_k6xyn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_r75jr")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-2, -4)]
-}
 
 [sub_resource type="Animation" id="Animation_30pax"]
 resource_name = "daño"
@@ -197,8 +134,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_c4suc"]
 resource_name = "sacudida"
-length = 0.11
-loop_mode = 1
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -242,15 +178,14 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 1, 0, 1, 0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8ign"]
 _data = {
-"RESET": SubResource("Animation_k6xyn"),
 "daño": SubResource("Animation_30pax"),
 "idle": SubResource("Animation_dmsib"),
 "sacudida": SubResource("Animation_c4suc")
@@ -262,6 +197,9 @@ animation = &"daño"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0dmd2"]
 animation = &"idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e7pqn"]
+animation = &"sacudida"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ucnkk"]
 advance_mode = 2
 
@@ -271,18 +209,32 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a7f0k"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sdi24"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_soggx"]
 states/End/position = Vector2(1032, 98.6667)
+states/Start/position = Vector2(196, 216)
 "states/daño/node" = SubResource("AnimationNodeAnimation_fc780")
-"states/daño/position" = Vector2(766.667, 98.4444)
+"states/daño/position" = Vector2(762.667, 214.444)
 states/idle/node = SubResource("AnimationNodeAnimation_0dmd2")
-states/idle/position = Vector2(456, 99.3333)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ucnkk"), "idle", "daño", SubResource("AnimationNodeStateMachineTransition_la7hs"), "daño", "idle", SubResource("AnimationNodeStateMachineTransition_h1lku")]
+states/idle/position = Vector2(452, 215.333)
+states/sacudida/node = SubResource("AnimationNodeAnimation_e7pqn")
+states/sacudida/position = Vector2(601.333, 64.6667)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ucnkk"), "idle", "daño", SubResource("AnimationNodeStateMachineTransition_la7hs"), "daño", "idle", SubResource("AnimationNodeStateMachineTransition_h1lku"), "idle", "sacudida", SubResource("AnimationNodeStateMachineTransition_a7f0k"), "sacudida", "idle", SubResource("AnimationNodeStateMachineTransition_sdi24")]
 
 [node name="enemigoprueba" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_s64nf")
 charco_scene = ExtResource("5_cfg6k")
+
+[node name="espumando" parent="." instance=ExtResource("3_hvmcx")]
+z_index = 1
+emitting = false
+amount = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, -6)
@@ -292,8 +244,7 @@ shape = SubResource("CircleShape2D_busdl")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2, -4)
 scale = Vector2(2, 2)
-texture = ExtResource("6_r75jr")
-hframes = 4
+texture = ExtResource("6_uknti")
 
 [node name="hitbox" type="Area2D" parent="."]
 

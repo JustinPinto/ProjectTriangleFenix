@@ -59,8 +59,8 @@ func _physics_process(delta):
 			velocity.y = move_toward(velocity.y,speed*move_input.y,aceleration)
 			
 		elif attacking && arma == Global.armas.DETERGENTE:
-			velocity.x = move_toward(velocity.x,speed*move_input.x* 0,aceleration)
-			velocity.y = move_toward(velocity.y,speed*move_input.y* 0,aceleration)
+			velocity.x = move_toward(velocity.x,speed*move_input.x* 0.1,aceleration)
+			velocity.y = move_toward(velocity.y,speed*move_input.y* 0.1,aceleration)
 			
 		else:	
 			velocity.x = move_toward(velocity.x,speed*move_input.x* 0.4,aceleration)
@@ -98,7 +98,7 @@ func _physics_process(delta):
 			elif move_input.x != 0 or move_input.y != 0:
 				playback.travel("run")		
 			else:
-				playback.travel("Idle")
+				playback.travel("Idle2")
 			
 		move_and_slide()
 
