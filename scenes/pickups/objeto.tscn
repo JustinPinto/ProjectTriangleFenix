@@ -18,7 +18,7 @@ radius = 18.0278
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ylxer"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_w57va"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fex6e"]
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_o7n1j")
@@ -37,7 +37,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_w57va")
+tree_root = SubResource("AnimationNodeStateMachine_fex6e")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="spriteQuieto" type="Sprite2D" parent="."]

@@ -3,9 +3,10 @@ extends Node2D
 
 @onready var jugador = Global.player
 @onready var sprite_2d = $Sprite2D
-@onready var animation_player = $AnimationPlayer
 @onready var sprite_quieto = $spriteQuieto
 
+@onready var animation_player = $AnimationPlayer
+@onready var animation_tree = $AnimationTree
 
 
 @export var tipo_arma : Global.armas = Global.armas.NADA
@@ -21,6 +22,8 @@ func get_texture():
 
 func _ready():
 	pass
+	
+	
 	
 func _process(delta):
 	if player_is_near and Input.is_action_just_pressed("interact"):

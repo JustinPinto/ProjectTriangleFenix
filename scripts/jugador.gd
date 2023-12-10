@@ -3,8 +3,9 @@ extends CharacterBody2D
 @export var agua_gpu_scene : PackedScene
 @export var attacking = false 
 @export var multiplicadorResbalado = 2
-@export var duracion_resbale = 0.7
+@export var duracion_resbale = 1.5
 
+@onready var sprite_2d = $pivot/Sprite2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -13,6 +14,7 @@ extends CharacterBody2D
 @onready var health_bar = $CanvasLayer/mona_vida
 
 @export var resbalo = false
+var oldModulate = self.modulate
 var tiempo_resbale = 0
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
@@ -70,7 +72,7 @@ func _physics_process(delta):
 			player_alive = false
 			health = 0
 			Debug.dprint("Juego terminado :(")
-			self.hide()
+#			self.hide()
 		
 		if move_input.x != 0 and not attacking: # para que se quede mirando al lado correcta a pesar de frenar
 			pivot.scale.x = sign(move_input.x)
@@ -88,7 +90,10 @@ func _physics_process(delta):
 			
 			elif taking_damage:
 				playback.travel("daño")
-
+				if !player_alive:
+					playback.travel("muerte")
+#					playback.travel("muerte2")
+					
 				
 			elif move_input.x != 0 or move_input.y != 0:
 				playback.travel("run")		
@@ -111,7 +116,7 @@ func _process(_delta):
 ## ATAQUE
 func _on_hitbox_awa_body_entered(body: Node2D) -> void:
 	##llama a la funcion ataque de enemigo
-	if body.has_method("enemy"):
+	if body.has_method("enemy") and attacking == true:
 		body.take_damage()
 		
 
@@ -168,11 +173,17 @@ func _on_area_2d_body_exited(body):
 		
 func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
+		
+		sprite_2d.modulate = Color(0.8,0.3,0.3)
 		taking_damage = true
 		health = health - 10
 		enemy_attack_cooldown = false
 		$enemy_attack_cooldown.start()
 		print(health)
+		await get_tree().create_timer(0.3).timeout # wait for 1 second
+		sprite_2d.modulate = oldModulate
+		
+
 	else: 
 		taking_damage = false	
 		
