@@ -18,12 +18,8 @@ var posicion = self.global_position
 func get_texture():
 	return sprite_2d.texture
 		
-
-
 func _ready():
 	pass
-	
-	
 	
 func _process(delta):
 	if player_is_near and Input.is_action_just_pressed("interact"):

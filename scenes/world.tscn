@@ -105,8 +105,12 @@ position = Vector2(160, 444)
 scale = Vector2(2, 2)
 
 [node name="Charco" parent="." instance=ExtResource("11_m78re")]
-position = Vector2(509, 556)
-scale = Vector2(2.80368, 3.23437)
+position = Vector2(506, 420)
+scale = Vector2(0.867, 1)
+
+[node name="Charco2" parent="." instance=ExtResource("11_m78re")]
+position = Vector2(738, 580)
+scale = Vector2(0.867, 1)
 
 [node name="SpawnerEnemigo" parent="." instance=ExtResource("12_4v377")]
 position = Vector2(801, 367)

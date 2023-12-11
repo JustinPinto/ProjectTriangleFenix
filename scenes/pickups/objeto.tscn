@@ -37,6 +37,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ylxer")
+}
 tree_root = SubResource("AnimationNodeStateMachine_fex6e")
 anim_player = NodePath("../AnimationPlayer")
 

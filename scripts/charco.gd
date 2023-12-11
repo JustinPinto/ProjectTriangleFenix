@@ -8,11 +8,6 @@ extends Area2D
 
 var player_is_near = false
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.has_method("player"):
-		body.resbalar()
-	Debug.dprint("charco")
-	
 func _ready():
 	animation_tree.active = true	
 	
@@ -21,10 +16,18 @@ func _process(delta):
 		Debug.dprint("charco limpiado")
 		queue_free()
 
-func _on_clean_body_entered(body):
-	if body.has_method("player"):
+func _on_area_entered(area):
+	Debug.dprint(area.name)
+	if area.name == "hitboxPies":
+		jugador.resbalar()
+		
+func _on_clean_area_entered(area):
+	if area.name == "hitboxPies" and jugador.arma == Global.armas.TRAPO:
+		sprite_2d.material.set_shader_parameter("width",5)	
 		player_is_near = true
 
-func _on_clean_body_exited(body):
-	if body.has_method("player"):
+
+func _on_clean_area_exited(area):
+	if area.name == "hitboxPies" and jugador.arma == Global.armas.TRAPO:
+		sprite_2d.material.set_shader_parameter("width",0)	
 		player_is_near = false

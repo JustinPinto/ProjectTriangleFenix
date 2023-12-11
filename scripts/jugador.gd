@@ -22,7 +22,7 @@ var taking_damage = false
 var arma : Global.armas = Global.armas.NADA
 var player_alive = true
 var aceleration = 1000
-var health = 100:
+var health = 200:
 	set(value):
 		health = value
 		if (health_bar):
@@ -78,8 +78,6 @@ func _physics_process(delta):
 			pivot.scale.x = sign(move_input.x)
 			
 		# Animation
-		
-
 		
 		if not attacking:
 #			playback.travel("attack")
@@ -146,18 +144,15 @@ func _input(event: InputEvent) -> void:
 			attacking = true 
 			playback.travel("attack_detergente")
 			
-			
-			
 		elif arma == Global.armas.ESPONJA:
 			Global.player_current_attack = true
 			attacking = true 
 			playback.travel("attack_esponja")
 			
 		elif arma == Global.armas.TRAPO:
+			attacking = true 
 			playback.travel("attack_trapo")
 			
-			
-
 
 func _on_attack_cooldown_timeout() -> void:
 	pass
