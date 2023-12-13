@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bejohwxwgf72e"]
 
-[ext_resource type="Texture2D" uid="uid://blcobwm3hfgjy" path="res://resources/burbuja.png" id="1_ed651"]
+[ext_resource type="Texture2D" uid="uid://y0c6xj816mpi" path="res://resources/burbuja-sheet.png" id="1_b72xn"]
 [ext_resource type="Script" path="res://detergente.gd" id="2_tidg0"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ybior"]
@@ -17,7 +17,7 @@ gravity = Vector3(0, 98, 0)
 emitting = false
 amount = 500
 process_material = SubResource("ParticleProcessMaterial_ybior")
-texture = ExtResource("1_ed651")
+texture = ExtResource("1_b72xn")
 lifetime = 0.9
 one_shot = true
 explosiveness = 0.82
