@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ct2n8voy7v0b0"]
+
+[ext_resource type="FontFile" uid="uid://dmsgdgbcnvdn5" path="res://fibberish.ttf" id="1_jry4e"]
+
+[resource]
+default_font = ExtResource("1_jry4e")
+default_font_size = 50
