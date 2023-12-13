@@ -21,7 +21,7 @@ var state = states.SUCIO
 @export var duracion_mojado = 5
 @export var duracion_espumado = 5
 
-@export var speed = 30
+@export var speed = 100
 @export var charco_scene: PackedScene
 @export var charco_detergente: PackedScene
 
@@ -36,7 +36,7 @@ var state = states.SUCIO
 
 
 
-var health = 200:
+var health = 100:
 	set(value):
 		health = value
 		if enemigo_vida:
@@ -125,7 +125,12 @@ func take_damage() -> void:
 	if health <= 0:
 		Global.enemy_count -= 1
 		Debug.dprint("muerto x.x")	
+		playback.travel("muerte")
+		goteando.emitting = false
+		espumando.emitting = false
+		await get_tree().create_timer(5.0, false).timeout
 		queue_free()
+		
 
 
 
