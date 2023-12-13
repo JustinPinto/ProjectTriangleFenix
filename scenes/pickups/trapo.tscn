@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctqahk8cohu4w"]
+[gd_scene load_steps=9 format=3 uid="uid://ctqahk8cohu4w"]
 
 [ext_resource type="PackedScene" uid="uid://b6iewf7x5dru3" path="res://scenes/pickups/objeto.tscn" id="1_1aa4x"]
 [ext_resource type="Shader" path="res://scenes/pickups/borde.gdshader" id="2_33s7w"]
@@ -12,12 +12,21 @@ shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eyjj6"]
-load_path = "res://.godot/imported/escob.png-628945f3830b94c3735c69f75dc58ef0.ctex"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fnyfa"]
 radius = 8.0
 height = 74.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p43qc"]
+animation = &"Idle3"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p770v"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4gkhe"]
+states/Idle3/node = SubResource("AnimationNodeAnimation_p43qc")
+states/Idle3/position = Vector2(556, 108.667)
+states/Start/position = Vector2(142.667, 89.3333)
+transitions = ["Start", "Idle3", SubResource("AnimationNodeStateMachineTransition_p770v")]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_htpsj"]
 load_path = "res://.godot/imported/escob.png-628945f3830b94c3735c69f75dc58ef0.ctex"
@@ -27,11 +36,16 @@ tipo_arma = 4
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_gftsi")
-texture = SubResource("CompressedTexture2D_eyjj6")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_fnyfa")
+
+[node name="AnimationPlayer" parent="." index="2"]
+speed_scale = 2.0
+
+[node name="AnimationTree" parent="." index="3"]
+tree_root = SubResource("AnimationNodeStateMachine_4gkhe")
 
 [node name="spriteQuieto" parent="." index="4"]
 visible = false

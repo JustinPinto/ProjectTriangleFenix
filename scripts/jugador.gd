@@ -1,6 +1,9 @@
 extends CharacterBody2D
 @export var speed = 500
 @export var agua_gpu_scene : PackedScene
+@export var detergente_gpu_scene: PackedScene
+
+
 @export var attacking = false 
 @export var multiplicadorResbalado = 2
 @export var duracion_resbale = 1.5
@@ -30,6 +33,8 @@ var health = 200:
 		
 
 @onready var agua_spawn: Marker2D = $pivot/AguaSpawn
+@onready var detergente_spawn = $pivot/detergenteSpawn
+
 @onready var attack_cooldown: Timer = $Attack_cooldown
 
 
@@ -104,6 +109,10 @@ func _physics_process(delta):
 func tirar_agua():
 	var inicio_agua = agua_gpu_scene.instantiate()
 	agua_spawn.add_child(inicio_agua)
+	
+func tirar_detergente(): 	
+	var inicio_detergente = detergente_gpu_scene.instantiate()
+	detergente_spawn.add_child(inicio_detergente)
 
 func _process(_delta):
 	pass

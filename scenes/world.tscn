@@ -1,8 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cc8sof2x818gq"]
+[gd_scene load_steps=20 format=3 uid="uid://cc8sof2x818gq"]
 
 [ext_resource type="Texture2D" uid="uid://bqvjosdxv4jso" path="res://resources/fondo4.png" id="1_eaaqn"]
 [ext_resource type="PackedScene" uid="uid://bclo58dxhbypu" path="res://scenes/enemigoprueba.tscn" id="3_134p3"]
 [ext_resource type="PackedScene" uid="uid://doram5416i8ln" path="res://scenes/jugador.tscn" id="3_aajl1"]
+[ext_resource type="PackedScene" uid="uid://p6heyi55246y" path="res://scenes/zapato.tscn" id="3_tyie3"]
+[ext_resource type="PackedScene" uid="uid://ce5ja3ttxl35n" path="res://scenes/Pantalon.tscn" id="4_dpbxs"]
 [ext_resource type="PackedScene" uid="uid://cxi2tt17evmfs" path="res://scenes/window.tscn" id="5_bo4hd"]
 [ext_resource type="Script" path="res://scripts/Window.gd" id="6_bhn8n"]
 [ext_resource type="PackedScene" uid="uid://be8ir8c5ug45c" path="res://scenes/pickups/cubeta.tscn" id="8_nerta"]
@@ -41,12 +43,18 @@ metadata/_edit_lock_ = true
 
 [node name="Jugador" parent="." instance=ExtResource("3_aajl1")]
 z_index = 2
-position = Vector2(267, 497)
+position = Vector2(363, 459)
 scale = Vector2(0.75, 0.75)
 collision_layer = 5
 
+[node name="Zapato" parent="." instance=ExtResource("3_tyie3")]
+position = Vector2(977, 654)
+
 [node name="enemigoprueba" parent="." instance=ExtResource("3_134p3")]
-position = Vector2(1010, 424)
+position = Vector2(596, 592)
+
+[node name="Pantalon" parent="." instance=ExtResource("4_dpbxs")]
+position = Vector2(390, 631)
 
 [node name="Window" parent="." instance=ExtResource("5_bo4hd")]
 visible = false
@@ -89,19 +97,19 @@ offset_right = 213.0
 offset_bottom = 233.0
 
 [node name="cubeta" parent="." instance=ExtResource("8_nerta")]
-position = Vector2(238, 646)
+position = Vector2(1106, 301)
 scale = Vector2(2, 2)
 
 [node name="esponja" parent="." instance=ExtResource("9_8m7hn")]
-position = Vector2(82, 556)
+position = Vector2(754, 304)
 scale = Vector2(3, 3)
 
 [node name="trapo" parent="." instance=ExtResource("10_15gnr")]
-position = Vector2(357, 341)
+position = Vector2(122, 303)
 scale = Vector2(2, 2)
 
 [node name="detergente" parent="." instance=ExtResource("9_gcrkk")]
-position = Vector2(160, 444)
+position = Vector2(478, 353)
 scale = Vector2(2, 2)
 
 [node name="Charco" parent="." instance=ExtResource("11_m78re")]
