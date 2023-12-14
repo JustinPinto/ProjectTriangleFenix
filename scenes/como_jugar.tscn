@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsaufd8ma4nak"]
+
+[ext_resource type="Script" path="res://scripts/como_jugar.gd" id="1_5p3kx"]
+[ext_resource type="Texture2D" uid="uid://dk1mwqhb34ln0" path="res://resources/howtoplay.png" id="1_hndky"]
+[ext_resource type="Theme" uid="uid://ct2n8voy7v0b0" path="res://temacredits.tres" id="2_jwxsr"]
+
+[node name="como_jugar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5p3kx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1344.0
+offset_bottom = 768.0
+scale = Vector2(0.950589, 0.936501)
+texture = ExtResource("1_hndky")
+
+[node name="LabelF" type="Label" parent="."]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 49.0
+offset_right = 327.0
+offset_bottom = 100.0
+theme = ExtResource("2_jwxsr")
+text = "Menu"
+
+[node name="LabelE" type="Label" parent="."]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 165.0
+offset_right = 332.0
+offset_bottom = 210.0
+theme = ExtResource("2_jwxsr")
+text = "Interact"
+
+[node name="LabelWASD" type="Label" parent="."]
+layout_mode = 0
+offset_left = 461.0
+offset_top = 268.0
+offset_right = 652.0
+offset_bottom = 313.0
+theme = ExtResource("2_jwxsr")
+text = "Movement"
+
+[node name="LabelEspace" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1013.0
+offset_top = 208.0
+offset_right = 1142.0
+offset_bottom = 253.0
+theme = ExtResource("2_jwxsr")
+text = "Attack"
+
+[node name="Tutorial" type="Label" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 582.0
+offset_right = 921.0
+offset_bottom = 723.0
+theme = ExtResource("2_jwxsr")
+text = "Use items to change laundry state.
+First you soak them, then use the cleaner 
+and finally you brush them"
+horizontal_alignment = 1
+
+[node name="LabelTrapero" type="Label" parent="."]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 577.0
+offset_right = 1270.0
+offset_bottom = 718.0
+theme = ExtResource("2_jwxsr")
+text = "Dont forget to
+clean your
+spacework too!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

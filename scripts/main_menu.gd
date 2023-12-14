@@ -14,8 +14,7 @@ func _ready():
 	exit_button.button_down.connect(on_exit_pressed)
 
 func on_h2p_down():
-	#get_tree().change_scene_to_file()
-	pass
+	get_tree().change_scene_to_file("res://scenes/como_jugar.tscn")
 
 func on_credits_pressed():
 	get_tree().change_scene_to_file("res://scenes/creditos.tscn")
