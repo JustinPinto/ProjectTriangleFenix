@@ -21,7 +21,7 @@ var state = states.SUCIO
 @export var duracion_mojado = 5
 @export var duracion_espumado = 5
 
-@export var speed = 100
+@export var speed = 300
 @export var charco_scene: PackedScene
 @export var charco_detergente: PackedScene
 
@@ -36,7 +36,7 @@ var state = states.SUCIO
 
 
 
-var health = 10:
+var health = 50:
 	set(value):
 		health = value
 		if enemigo_vida:

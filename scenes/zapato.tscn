@@ -11,8 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bf1rdcq63ln34" path="res://resources/zapatillaau.png" id="7_kad31"]
 [ext_resource type="Texture2D" uid="uid://c27fso8fk2u8" path="res://resources/subida.png" id="10_wdfnk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_albmn"]
-radius = 34.5579
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ud3bs"]
+radius = 35.9728
+height = 112.943
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytbkj"]
 radius = 42.19
@@ -410,9 +411,9 @@ emitting = false
 amount = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, -6)
-scale = Vector2(0.7, 0.7)
-shape = SubResource("CircleShape2D_albmn")
+position = Vector2(3, -18)
+scale = Vector2(0.820065, 0.726029)
+shape = SubResource("CapsuleShape2D_ud3bs")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

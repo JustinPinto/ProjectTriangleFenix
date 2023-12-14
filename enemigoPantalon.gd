@@ -20,7 +20,7 @@ var state = states.SUCIO
 @export var duracion_mojado = 5
 @export var duracion_espumado = 5
 
-@export var speed = 30
+@export var speed = 50
 @export var charco_scene: PackedScene
 
 
