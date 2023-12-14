@@ -139,7 +139,7 @@ func setMojado() -> void:
 		tiempo_mojado = 0
 		if not charco_scene:
 			return
-		await get_tree().create_timer(3.0, false).timeout
+		await get_tree().create_timer(5.0, false).timeout
 		var charco = charco_scene.instantiate()
 		get_parent().add_child(charco)
 		charco.global_position = charco_spawn.global_position
@@ -159,7 +159,7 @@ func setDetergente() -> void:
 		tiempo_espumado = 0
 		if not charco_scene:
 			return
-		await get_tree().create_timer(3.0, false).timeout
+		await get_tree().create_timer(5.0, false).timeout
 		var charco = charco_scene.instantiate()
 		get_parent().add_child(charco)
 		charco.global_position = charco_spawn.global_position

@@ -168,58 +168,6 @@ tracks/5/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_wjx1a"]
-resource_name = "danho"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_lfhs8")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 0, 0, 0]
-}
-
 [sub_resource type="Animation" id="Animation_vaa3p"]
 resource_name = "muerte"
 length = 0.8
@@ -348,11 +296,63 @@ tracks/3/keys = {
 "values": [0, 1, 0, 1, 0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_ynsvo"]
+resource_name = "death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_lfhs8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iosqj"]
 _data = {
 "Idle": SubResource("Animation_pn6j5"),
 "RESET": SubResource("Animation_32du3"),
-"danho": SubResource("Animation_wjx1a"),
+"death": SubResource("Animation_ynsvo"),
 "muerte": SubResource("Animation_vaa3p"),
 "sacudida": SubResource("Animation_pqatu")
 }
@@ -360,8 +360,8 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1rv35"]
 animation = &"Idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bo5sn"]
-animation = &"danho"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ckkl5"]
+animation = &"death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aa1gq"]
 animation = &"muerte"
@@ -372,12 +372,6 @@ animation = &"sacudida"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dq02l"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y6y75"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_doppp"]
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_87t6w"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sdfju"]
@@ -386,17 +380,23 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ux1sc"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2vos6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k8fjt"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fdiub"]
 states/Idle/node = SubResource("AnimationNodeAnimation_1rv35")
 states/Idle/position = Vector2(424, 149.556)
 states/Start/position = Vector2(202.667, 84.4444)
-states/danho/node = SubResource("AnimationNodeAnimation_bo5sn")
-states/danho/position = Vector2(682.667, 150)
+states/death/node = SubResource("AnimationNodeAnimation_ckkl5")
+states/death/position = Vector2(650.667, 151.333)
 states/muerte/node = SubResource("AnimationNodeAnimation_aa1gq")
 states/muerte/position = Vector2(648, 54)
 states/sacudida/node = SubResource("AnimationNodeAnimation_7xlno")
 states/sacudida/position = Vector2(412, 32.6667)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_dq02l"), "Idle", "danho", SubResource("AnimationNodeStateMachineTransition_y6y75"), "danho", "Idle", SubResource("AnimationNodeStateMachineTransition_doppp"), "Idle", "sacudida", SubResource("AnimationNodeStateMachineTransition_87t6w"), "sacudida", "Idle", SubResource("AnimationNodeStateMachineTransition_sdfju"), "Idle", "muerte", SubResource("AnimationNodeStateMachineTransition_ux1sc")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_dq02l"), "Idle", "sacudida", SubResource("AnimationNodeStateMachineTransition_87t6w"), "sacudida", "Idle", SubResource("AnimationNodeStateMachineTransition_sdfju"), "Idle", "muerte", SubResource("AnimationNodeStateMachineTransition_ux1sc"), "Idle", "death", SubResource("AnimationNodeStateMachineTransition_2vos6"), "death", "Idle", SubResource("AnimationNodeStateMachineTransition_k8fjt")]
 
 [node name="Pantalon" type="CharacterBody2D"]
 script = ExtResource("1_qmrib")
@@ -445,11 +445,13 @@ amount = 10
 position = Vector2(0, 56)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
 libraries = {
 "": SubResource("AnimationLibrary_iosqj")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 libraries = {
 "": SubResource("AnimationLibrary_iosqj")
 }

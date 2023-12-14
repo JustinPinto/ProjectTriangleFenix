@@ -32,7 +32,7 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.has_method("player"):
 		player_is_near = true
-		sprite_2d.material.set_shader_parameter("width",5)	
+		sprite_2d.material.set_shader_parameter("width",1.2)	
 
 func _on_body_exited(body):
 	if body.has_method("player"):

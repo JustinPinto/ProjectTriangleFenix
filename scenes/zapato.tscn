@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cpkvh76ubusn" path="res://scenes/charco.tscn" id="2_5w6rg"]
 [ext_resource type="PackedScene" uid="uid://ccuc514f4qega" path="res://scenes/enemigo_vida.tscn" id="2_dnbvr"]
 [ext_resource type="PackedScene" uid="uid://2pxxmkgra5dc" path="res://scenes/goteando.tscn" id="3_pti2a"]
-[ext_resource type="PackedScene" path="res://scenes/charco_detergente.tscn" id="3_w65y5"]
+[ext_resource type="PackedScene" uid="uid://cyln8kmwc23py" path="res://scenes/charco_detergente.tscn" id="3_w65y5"]
 [ext_resource type="Texture2D" uid="uid://cdm44csago805" path="res://resources/zapatillamalidlea.png" id="6_lo38u"]
 [ext_resource type="Texture2D" uid="uid://bf1rdcq63ln34" path="res://resources/zapatillaau.png" id="7_kad31"]
 [ext_resource type="Texture2D" uid="uid://c27fso8fk2u8" path="res://resources/subida.png" id="10_wdfnk"]
