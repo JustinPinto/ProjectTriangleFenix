@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3ejiflx50po5"]
+[gd_scene load_steps=7 format=3 uid="uid://b3ejiflx50po5"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_a72ly"]
-[ext_resource type="Texture2D" uid="uid://byxvk7pjl8cu0" path="res://icon.svg" id="2_meqfp"]
+[ext_resource type="Texture2D" uid="uid://b65ogphs6yxrp" path="res://resources/photoMenu.jpg" id="2_82ne8"]
+[ext_resource type="FontFile" uid="uid://bpkxpf10w4upq" path="res://fibberish.ttf" id="3_wuylg"]
+[ext_resource type="Theme" uid="uid://ct2n8voy7v0b0" path="res://temacredits.tres" id="4_tsjib"]
+[ext_resource type="StyleBox" uid="uid://du5xvtyjv4re5" path="res://resources/temaBotones.tres" id="5_io7l8"]
 
-[sub_resource type="SystemFont" id="SystemFont_ikrq0"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_wfylw"]
-font_names = PackedStringArray("Impact")
+[sub_resource type="Theme" id="Theme_k5khu"]
+default_font = ExtResource("3_wuylg")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_k5khu")
 script = ExtResource("1_a72ly")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -23,9 +24,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 310.0
+offset_bottom = 332.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_meqfp")
+scale = Vector2(0.804127, 0.683916)
+texture = ExtResource("2_82ne8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,8 +40,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -48,21 +52,30 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = SubResource("SystemFont_ikrq0")
-theme_override_font_sizes/font_size = 64
-text = "Isekai"
-horizontal_alignment = 1
+theme_override_colors/font_shadow_color = Color(0.65098, 0.572549, 0, 1)
+theme_override_colors/font_outline_color = Color(0.690196, 0.780392, 0.909804, 1)
+theme_override_constants/shadow_offset_x = 20
+theme_override_constants/shadow_offset_y = 18
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_wuylg")
+theme_override_font_sizes/font_size = 100
+text = "Clean Combat 
+Cuddles!"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 14
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(120, 30)
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
@@ -72,13 +85,33 @@ layout_mode = 2
 [node name="Play_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_wfylw")
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("4_tsjib")
+theme_override_fonts/font = ExtResource("3_wuylg")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_io7l8")
 text = "Play"
+
+[node name="H2P_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_tsjib")
+theme_override_fonts/font = ExtResource("3_wuylg")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_io7l8")
+text = "How to Play"
+
+[node name="Credits_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wuylg")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_io7l8")
+text = "Credits"
 
 [node name="Exit_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_wfylw")
-theme_override_font_sizes/font_size = 30
-text = "boton 1"
+theme_override_fonts/font = ExtResource("3_wuylg")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_io7l8")
+text = "Exit"

@@ -1202,6 +1202,7 @@ position = Vector2(-3, 9)
 position = Vector2(-6, 3)
 scale = Vector2(2, 2.032)
 texture = ExtResource("3_xqg34")
+frame = 11
 
 [node name="detergenteSpawn" type="Marker2D" parent="pivot"]
 position = Vector2(59, 1)
