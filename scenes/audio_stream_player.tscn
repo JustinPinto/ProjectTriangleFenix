@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3ee1w3ny1p5t"]
+
+[ext_resource type="AudioStream" uid="uid://cbrqw3h6f8po3" path="res://resources/Life Attraction @ フリーBGM DOVA-SYNDROME OFFICIAL YouTube CHANNEL.wav" id="1_kaxxe"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_kaxxe")
+volume_db = -41.225
+autoplay = true

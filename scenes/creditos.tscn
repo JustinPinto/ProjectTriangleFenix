@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://rhtww5vrti81"]
 
-[ext_resource type="Theme" uid="uid://ct2n8voy7v0b0" path="res://scenes/temacredits.tres" id="1_n7afs"]
-[ext_resource type="Texture2D" uid="uid://buh23jpb3olgv" path="res://image.jpg" id="2_xf74m"]
+[ext_resource type="Theme" uid="uid://ct2n8voy7v0b0" path="res://temacredits.tres" id="1_n7afs"]
+[ext_resource type="Texture2D" uid="uid://dpegby3y5xxfc" path="res://image.jpg" id="2_xf74m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_66rgw"]
 texture = ExtResource("2_xf74m")
@@ -79,7 +79,7 @@ size_flags_vertical = 0
 layout_mode = 2
 text = "SPRITES:
 @Javiera Loyola
-@El amigo del Nacho
+@Taks
 @VampireGirl
 @beamedeighth
 

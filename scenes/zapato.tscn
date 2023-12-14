@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://p6heyi55246y"]
+[gd_scene load_steps=30 format=3 uid="uid://p6heyi55246y"]
 
 [ext_resource type="PackedScene" uid="uid://dgsc2gh621mcf" path="res://scenes/espumando.tscn" id="1_3oo25"]
 [ext_resource type="Script" path="res://scenes/zapato.gd" id="1_w531v"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cpkvh76ubusn" path="res://scenes/charco.tscn" id="2_5w6rg"]
 [ext_resource type="PackedScene" uid="uid://ccuc514f4qega" path="res://scenes/enemigo_vida.tscn" id="2_dnbvr"]
 [ext_resource type="PackedScene" uid="uid://2pxxmkgra5dc" path="res://scenes/goteando.tscn" id="3_pti2a"]
-[ext_resource type="PackedScene" uid="uid://cyln8kmwc23py" path="res://scenes/charco_detergente.tscn" id="3_w65y5"]
+[ext_resource type="PackedScene" path="res://scenes/charco_detergente.tscn" id="3_w65y5"]
 [ext_resource type="Texture2D" uid="uid://cdm44csago805" path="res://resources/zapatillamalidlea.png" id="6_lo38u"]
 [ext_resource type="Texture2D" uid="uid://bf1rdcq63ln34" path="res://resources/zapatillaau.png" id="7_kad31"]
+[ext_resource type="Texture2D" uid="uid://c27fso8fk2u8" path="res://resources/subida.png" id="10_wdfnk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_albmn"]
 radius = 34.5579
@@ -68,6 +69,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hitbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_dm0pr"]
 length = 0.001
@@ -118,6 +143,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_u7ujm"]
@@ -170,6 +219,82 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 0, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_u0eir"]
+resource_name = "muerte"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_wdfnk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_gc0pp"]
@@ -229,6 +354,7 @@ _data = {
 "Idle": SubResource("Animation_4goag"),
 "RESET": SubResource("Animation_dm0pr"),
 "daño": SubResource("Animation_u7ujm"),
+"muerte": SubResource("Animation_u0eir"),
 "sacudida": SubResource("Animation_gc0pp")
 }
 
@@ -237,6 +363,9 @@ animation = &"Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cbsvr"]
 animation = &"daño"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gy5uq"]
+animation = &"muerte"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dpnya"]
 animation = &"sacudida"
@@ -256,14 +385,18 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gfwn1"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xgyau"]
 states/Idle/node = SubResource("AnimationNodeAnimation_w46ud")
-states/Idle/position = Vector2(398.667, 184.667)
+states/Idle/position = Vector2(376, 172.667)
 "states/daño/node" = SubResource("AnimationNodeAnimation_cbsvr")
-"states/daño/position" = Vector2(484, 53.4265)
+"states/daño/position" = Vector2(329.333, 41.4265)
+states/muerte/node = SubResource("AnimationNodeAnimation_gy5uq")
+states/muerte/position = Vector2(622.667, 42.7599)
 states/sacudida/node = SubResource("AnimationNodeAnimation_dpnya")
 states/sacudida/position = Vector2(653.333, 165.426)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2unty"), "Idle", "daño", SubResource("AnimationNodeStateMachineTransition_3y8fo"), "daño", "Idle", SubResource("AnimationNodeStateMachineTransition_4xsh8"), "Idle", "sacudida", SubResource("AnimationNodeStateMachineTransition_7hq5v"), "sacudida", "Idle", SubResource("AnimationNodeStateMachineTransition_rdmpl")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2unty"), "Idle", "daño", SubResource("AnimationNodeStateMachineTransition_3y8fo"), "daño", "Idle", SubResource("AnimationNodeStateMachineTransition_4xsh8"), "Idle", "sacudida", SubResource("AnimationNodeStateMachineTransition_7hq5v"), "sacudida", "Idle", SubResource("AnimationNodeStateMachineTransition_rdmpl"), "Idle", "muerte", SubResource("AnimationNodeStateMachineTransition_gfwn1")]
 graph_offset = Vector2(0, -33.9069)
 
 [node name="Zapato" type="CharacterBody2D"]
@@ -280,9 +413,10 @@ amount = 4
 position = Vector2(1.5, -6)
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_albmn")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-6, -18)
+position = Vector2(2, -17)
 scale = Vector2(2, 2)
 texture = ExtResource("2_1i80g")
 hframes = 2
@@ -293,6 +427,7 @@ hframes = 2
 position = Vector2(1, -6)
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_ytbkj")
+disabled = true
 
 [node name="EnemigoVida" parent="." instance=ExtResource("2_dnbvr")]
 offset_left = -39.0
@@ -321,3 +456,5 @@ anim_player = NodePath("../AnimationPlayer")
 libraries = {
 "": SubResource("AnimationLibrary_7xcq0")
 }
+
+[connection signal="timeout" from="MovimientoRandom" to="." method="_on_timer_timeout"]
