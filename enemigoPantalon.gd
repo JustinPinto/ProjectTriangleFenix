@@ -22,6 +22,7 @@ var state = states.SUCIO
 
 @export var speed = 50
 @export var charco_scene: PackedScene
+@export var charco_detergente: PackedScene
 
 
 @onready var jugador = Global.player
@@ -33,7 +34,7 @@ var state = states.SUCIO
 
 
 
-var health = 300:
+var health = 350:
 	set(value):
 		health = value
 		if enemigo_vida:
@@ -57,12 +58,19 @@ func _process(delta):
 	if state == states.MOJADO:
 		tiempo_mojado += delta
 		if tiempo_mojado >= duracion_mojado:
+			var charco = charco_scene.instantiate()
+			get_parent().add_child(charco)
+			charco.global_position = charco_spawn.global_position			
+			
 			playback.travel("sacudida")
 			setSucio()
 			
 	elif state == states.ESPUMADO:
 		tiempo_espumado += delta
 		if tiempo_espumado >= duracion_espumado:
+			var charco = charco_detergente.instantiate()
+			get_parent().add_child(charco)
+			charco.global_position = charco_spawn.global_position
 			playback.travel("sacudida")
 			setSucio()
 		
@@ -72,7 +80,7 @@ func _process(delta):
 
 
 func take_damage() -> void:
-	playback.travel("death")
+	playback.travel("daño")
 	
 	if jugador.arma == Global.armas.NADA:
 		pass
@@ -138,10 +146,8 @@ func setMojado() -> void:
 		tiempo_mojado = 0
 		if not charco_scene:
 			return
-		await get_tree().create_timer(5.0, false).timeout
-		var charco = charco_scene.instantiate()
-		get_parent().add_child(charco)
-		charco.global_position = charco_spawn.global_position
+		await get_tree().create_timer(7.0, false).timeout
+
 		
 
 #Cuando ataca con un detergente
@@ -158,10 +164,8 @@ func setDetergente() -> void:
 		tiempo_espumado = 0
 		if not charco_scene:
 			return
-		await get_tree().create_timer(5.0, false).timeout
-		var charco = charco_scene.instantiate()
-		get_parent().add_child(charco)
-		charco.global_position = charco_spawn.global_position
+		await get_tree().create_timer(7.0, false).timeout
+
 
 
 #Cuando ataca con una esponja

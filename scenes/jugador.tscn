@@ -9,18 +9,18 @@
 [ext_resource type="Texture2D" uid="uid://b4evr8hwgntso" path="res://resources/sombras.png" id="6_46pxu"]
 [ext_resource type="PackedScene" uid="uid://b411ilha5n6yc" path="res://scenes/menu_pausa.tscn" id="6_643qp"]
 [ext_resource type="Texture2D" uid="uid://c4yq4t7lon8ar" path="res://resources/disparo_sombras.png" id="6_xdhh5"]
-[ext_resource type="Texture2D" uid="uid://cpfxaijhhe2n8" path="res://resources/ataquesponja.png" id="7_o13js"]
 [ext_resource type="PackedScene" uid="uid://b3mep4p1tfwl7" path="res://scenes/mona_vida.tscn" id="7_v5yhv"]
 [ext_resource type="Texture2D" uid="uid://vayqlkqhop3j" path="res://resources/sinarma.png" id="8_0lswq"]
 [ext_resource type="Texture2D" uid="uid://de0brjh4hcru2" path="res://resources/dano_extendido.png" id="8_l6l18"]
 [ext_resource type="Texture2D" uid="uid://4484423qbi6k" path="res://resources/resbalo2.png" id="9_knm53"]
 [ext_resource type="Texture2D" uid="uid://wq87q45qewq1" path="res://resources/monatrapeando.png" id="9_mu7ax"]
+[ext_resource type="Texture2D" uid="uid://kqldv053op8o" path="res://resources/WAAAAAA.png" id="9_rbq8t"]
 [ext_resource type="Texture2D" uid="uid://ce4sgmgsfdf53" path="res://resources/murio.png" id="10_v861i"]
 [ext_resource type="Texture2D" uid="uid://tqm3457f4on6" path="res://resources/vivida.png" id="13_r6gsp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hlyq"]
-radius = 94.0
-height = 196.0
+radius = 96.0
+height = 352.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c771w"]
 radius = 17.9419
@@ -480,7 +480,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_brtrn"]
 resource_name = "attack_esponja"
-length = 0.5389
+length = 0.55
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -496,74 +496,74 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Sprite2D:texture")
+tracks/1/path = NodePath("pivot/HitboxAwa/CollisionShape2D2:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.545),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("7_o13js")]
+"values": [true, false, true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("pivot/Sprite2D:hframes")
+tracks/2/path = NodePath("pivot/Sprite2D:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [ExtResource("9_rbq8t")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("pivot/Sprite2D:vframes")
+tracks/3/path = NodePath("pivot/Sprite2D:hframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [6]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("pivot/Sprite2D:frame")
+tracks/4/path = NodePath("pivot/Sprite2D:vframes")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("pivot/Sprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("pivot/Sprite2D:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(33, -5)]
-}
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("pivot/HitboxAwa/CollisionShape2D2:disabled")
+tracks/6/path = NodePath("pivot/Sprite2D:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(92, -37)]
 }
 
 [sub_resource type="Animation" id="Animation_mhg3l"]
@@ -1202,6 +1202,7 @@ position = Vector2(-3, 9)
 position = Vector2(-6, 3)
 scale = Vector2(2, 2.032)
 texture = ExtResource("3_xqg34")
+frame = 4
 
 [node name="detergenteSpawn" type="Marker2D" parent="pivot"]
 position = Vector2(59, 1)
@@ -1214,7 +1215,8 @@ metadata/_edit_lock_ = true
 [node name="HitboxAwa" type="Area2D" parent="pivot"]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="pivot/HitboxAwa"]
-position = Vector2(133, 4)
+position = Vector2(231, -2)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0hlyq")
 disabled = true
 
@@ -1243,6 +1245,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 libraries = {
 "": SubResource("AnimationLibrary_8e46w")
 }

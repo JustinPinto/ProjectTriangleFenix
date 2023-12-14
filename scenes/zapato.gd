@@ -21,7 +21,7 @@ var state = states.SUCIO
 @export var duracion_mojado = 7
 @export var duracion_espumado = 7
 
-@export var speed = 300
+@export var speed = 200
 @export var charco_scene: PackedScene
 @export var charco_detergente: PackedScene
 
@@ -151,7 +151,7 @@ func setMojado() -> void:
 		tiempo_mojado = 0
 		if not charco_scene:
 			return
-		await get_tree().create_timer(5.0, false).timeout
+		await get_tree().create_timer(7.0, false).timeout
 
 		
 
@@ -169,7 +169,7 @@ func setDetergente() -> void:
 		tiempo_espumado = 0
 		if not charco_scene:
 			return
-		await get_tree().create_timer(5.0, false).timeout
+		await get_tree().create_timer(7.0, false).timeout
 
 
 

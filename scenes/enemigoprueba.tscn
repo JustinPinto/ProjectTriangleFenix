@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://bclo58dxhbypu"]
+[gd_scene load_steps=31 format=3 uid="uid://bclo58dxhbypu"]
 
 [ext_resource type="Script" path="res://scripts/enemigoprueba.gd" id="1_s64nf"]
 [ext_resource type="PackedScene" uid="uid://2pxxmkgra5dc" path="res://scenes/goteando.tscn" id="2_n3yxl"]
 [ext_resource type="Texture2D" uid="uid://ix8x15wdnh5d" path="res://resources/polera idle.png" id="3_4gigb"]
 [ext_resource type="PackedScene" uid="uid://dgsc2gh621mcf" path="res://scenes/espumando.tscn" id="3_hvmcx"]
+[ext_resource type="PackedScene" uid="uid://cyln8kmwc23py" path="res://scenes/charco_detergente.tscn" id="3_i141k"]
 [ext_resource type="PackedScene" uid="uid://ccuc514f4qega" path="res://scenes/enemigo_vida.tscn" id="3_v2jua"]
 [ext_resource type="PackedScene" uid="uid://cpkvh76ubusn" path="res://scenes/charco.tscn" id="5_cfg6k"]
 [ext_resource type="Texture2D" uid="uid://j2qvi5vvavyi" path="res://resources/golpe_polera.png" id="6_uknti"]
@@ -419,6 +420,7 @@ graph_offset = Vector2(0, 68.8)
 z_index = 1
 script = ExtResource("1_s64nf")
 charco_scene = ExtResource("5_cfg6k")
+charco_detergente = ExtResource("3_i141k")
 
 [node name="espumando" parent="." instance=ExtResource("3_hvmcx")]
 z_index = 1

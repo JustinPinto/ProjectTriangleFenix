@@ -23,18 +23,19 @@ var state = states.SUCIO
 
 @export var speed = 75
 @export var charco_scene: PackedScene
-
+@export var charco_detergente: PackedScene
 
 @onready var jugador = Global.player
 #var arma: Global.armas = Global.armas
 @onready var goteando: GPUParticles2D = $goteando
 @onready var movimiento_random: Timer = $MovimientoRandom
 @onready var charco_spawn: Marker2D = $CharcoSpawn
+
 @onready var espumando = $espumando
 
 
 
-var health = 150:
+var health = 200:
 	set(value):
 		health = value
 		if enemigo_vida:
@@ -58,12 +59,21 @@ func _process(delta):
 	if state == states.MOJADO:
 		tiempo_mojado += delta
 		if tiempo_mojado >= duracion_mojado:
+			
+			var charco = charco_scene.instantiate()
+			get_parent().add_child(charco)
+			charco.global_position = charco_spawn.global_position			
+			
 			playback.travel("sacudida")
 			setSucio()
 			
 	elif state == states.ESPUMADO:
 		tiempo_espumado += delta
 		if tiempo_espumado >= duracion_espumado:
+			var charco = charco_detergente.instantiate()
+			get_parent().add_child(charco)
+			charco.global_position = charco_spawn.global_position			
+			
 			playback.travel("sacudida")
 			setSucio()
 		
@@ -117,7 +127,7 @@ func take_damage() -> void:
 		playback.travel("muerte")
 		goteando.emitting = false
 		espumando.emitting = false
-		await get_tree().create_timer(5.0, false).timeout
+		await get_tree().create_timer(0.8, false).timeout
 		queue_free()
 
 
@@ -139,10 +149,8 @@ func setMojado() -> void:
 		tiempo_mojado = 0
 		if not charco_scene:
 			return
-		await get_tree().create_timer(5.0, false).timeout
-		var charco = charco_scene.instantiate()
-		get_parent().add_child(charco)
-		charco.global_position = charco_spawn.global_position
+		await get_tree().create_timer(7.0, false).timeout
+
 		
 
 #Cuando ataca con un detergente
@@ -159,10 +167,8 @@ func setDetergente() -> void:
 		tiempo_espumado = 0
 		if not charco_scene:
 			return
-		await get_tree().create_timer(5.0, false).timeout
-		var charco = charco_scene.instantiate()
-		get_parent().add_child(charco)
-		charco.global_position = charco_spawn.global_position
+		await get_tree().create_timer(7.0, false).timeout
+
 
 
 #Cuando ataca con una esponja

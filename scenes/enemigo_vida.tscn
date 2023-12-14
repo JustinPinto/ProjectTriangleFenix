@@ -24,5 +24,5 @@ mouse_filter = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-max_value = 200.0
+max_value = 300.0
 texture_progress = ExtResource("2_fgfpm")

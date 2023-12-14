@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://ce5ja3ttxl35n"]
+[gd_scene load_steps=30 format=3 uid="uid://ce5ja3ttxl35n"]
 
 [ext_resource type="Script" path="res://enemigoPantalon.gd" id="1_qmrib"]
 [ext_resource type="PackedScene" uid="uid://cpkvh76ubusn" path="res://scenes/charco.tscn" id="2_fxk4l"]
 [ext_resource type="Texture2D" uid="uid://digdbxt6r5ps4" path="res://resources/pantalon_.png" id="2_weumw"]
 [ext_resource type="PackedScene" uid="uid://dgsc2gh621mcf" path="res://scenes/espumando.tscn" id="3_q0vbw"]
+[ext_resource type="PackedScene" uid="uid://cyln8kmwc23py" path="res://scenes/charco_detergente.tscn" id="3_rlxpm"]
 [ext_resource type="PackedScene" uid="uid://ccuc514f4qega" path="res://scenes/enemigo_vida.tscn" id="4_tjdlw"]
 [ext_resource type="PackedScene" uid="uid://2pxxmkgra5dc" path="res://scenes/goteando.tscn" id="5_v2l5p"]
 [ext_resource type="Texture2D" uid="uid://btgxmy4250aqo" path="res://resources/aupantalon2.png" id="6_lfhs8"]
@@ -168,6 +169,58 @@ tracks/5/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_ynsvo"]
+resource_name = "death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_lfhs8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0]
+}
+
 [sub_resource type="Animation" id="Animation_vaa3p"]
 resource_name = "muerte"
 length = 0.8
@@ -296,58 +349,6 @@ tracks/3/keys = {
 "values": [0, 1, 0, 1, 0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_ynsvo"]
-resource_name = "death"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_lfhs8")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 0, 0, 0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iosqj"]
 _data = {
 "Idle": SubResource("Animation_pn6j5"),
@@ -401,6 +402,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [node name="Pantalon" type="CharacterBody2D"]
 script = ExtResource("1_qmrib")
 charco_scene = ExtResource("2_fxk4l")
+charco_detergente = ExtResource("3_rlxpm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2, -4)
