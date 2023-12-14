@@ -36,7 +36,7 @@ var state = states.SUCIO
 
 
 
-var health = 100:
+var health = 10:
 	set(value):
 		health = value
 		if enemigo_vida:

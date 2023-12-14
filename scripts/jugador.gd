@@ -78,6 +78,9 @@ func _physics_process(delta):
 			health = 0
 			Debug.dprint("Juego terminado :(")
 #			self.hide()
+
+		if Global.enemy_count == 0:
+			playback.travel("victoria")
 		
 		if move_input.x != 0 and not attacking: # para que se quede mirando al lado correcta a pesar de frenar
 			pivot.scale.x = sign(move_input.x)
