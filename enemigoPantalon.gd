@@ -17,10 +17,10 @@ var state = states.SUCIO
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 
-@export var duracion_mojado = 5
-@export var duracion_espumado = 5
+@export var duracion_mojado = 7
+@export var duracion_espumado = 7
 
-@export var speed = 30
+@export var speed = 50
 @export var charco_scene: PackedScene
 
 
@@ -33,7 +33,7 @@ var state = states.SUCIO
 
 
 
-var health = 100:
+var health = 300:
 	set(value):
 		health = value
 		if enemigo_vida:
@@ -83,8 +83,8 @@ func take_damage() -> void:
 		Debug.dprint(health)
 		setMojado()
 		
-		if state == states.MOJADO:
-			health -= 20
+		if state == states.SUCIO:
+			health -= 30
 		else: health -=10		
 					
 	elif jugador.arma == Global.armas.DETERGENTE:
@@ -92,8 +92,8 @@ func take_damage() -> void:
 		Debug.dprint(health)
 		setDetergente()
 		
-		if state == states.ESPUMADO:
-			health -= 30	
+		if state == states.MOJADO:
+			health -= 60	
 		else: health -=10	
 				
 	elif jugador.arma == Global.armas.ESPONJA:
@@ -102,8 +102,8 @@ func take_damage() -> void:
 		
 		setEscobilla()
 		
-		if state == states.ESCOBILLADO:
-			health -= 40
+		if state == states.ESPUMADO:
+			health -= 100
 		else: health -= 10
 			
 	elif jugador.arma == Global.armas.TRAPO:
