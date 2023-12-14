@@ -56,13 +56,13 @@ layout_mode = 2
 
 [node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-text = "CREADO POR:
+text = "CREATED BY:
 @Ignacio Gajardo
 @Javiera Loyola
 @Justin Pinto
 @Salvador Vasquez
 
-PROGRAMACION:
+CODING:
 @Ignacio Gajardo
 @Justin Pinto
 @Salvador Vasquez"
@@ -85,7 +85,7 @@ text = "SPRITES:
 @VampireGirl
 @beamedeighth
 
-LETRA:
+FONT:
 @nathan scott
 
 MUSIC:
